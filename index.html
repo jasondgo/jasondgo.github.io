@@ -218,9 +218,6 @@
         }
         
         .project-logo {
-            width: 120px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             margin: 0 auto 2rem;
             display: flex;
@@ -228,6 +225,11 @@
             justify-content: center;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.8);
+        
+        }
+
+        .logo-class {
+            height: 190px;
         }
         
         .project-title {
@@ -527,8 +529,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Alex Chen & Jordan Smith</h1>
-        <p>Full-stack developers passionate about creating innovative solutions. Currently collaborating on Lechuga, an automated food service platform that's revolutionizing the way people experience fresh, healthy meals.</p>
+        <h1>Jason Gomez & Alexis Mejia</h1>
+        <p>We are Texas A&M Mechatronics students collaborating on Lechuga, an automated food service system designed to improve customer experience through consistency and speed in fast food and fast casual restaurants. This combined portfolio highlights the specific challenges each of us has tackled while contributing to the project.</p>
         <a href="#lechuga" class="cta-button">View Our Project</a>
     </section>
 
@@ -538,17 +540,19 @@
             <h2 class="section-title">About Us</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <div class="member-photo">[Professional Photo]</div>
-                    <h3 class="member-name">Alex Chen</h3>
-                    <p class="member-role">Full-Stack Developer</p>
-                    <p class="member-bio">Passionate about backend architecture, API design, and building scalable systems. Focused on creating robust infrastructure that can handle complex food service operations and real-time data processing.</p>
+                    <img src="./jasonImage.jpg" class="member-photo"></img>
+                    <h3 class="member-name">Jason Gomez</h3>
+                    <p class="member-role">Software and Systems Integration</p>
+                    <p class="member-bio">Entrepreneurial engineering student passionate about robotics, automation, and embedded systems, with experience in a full-stack automated food service platform. Focused on real-time systems that bridge hardware and software while driving meaningful impact in efficiency and user experience.</p>
                     <div class="member-skills">
-                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">C/C++</span>
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">CMake</span>
+                        <span class="skill-tag">Electronics Testing</span>
+                        <span class="skill-tag">Embedded Systems</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Unit Testing</span>
+                        <span class="skill-tag">Integration Testing</span>
                     </div>
                 </div>
                 <div class="team-member">
@@ -573,31 +577,14 @@
     <section class="section main-project-section" id="lechuga">
         <div class="section-content">
             <div class="project-overview">
-                <div class="project-logo">[Lechuga Logo]</div>
-                <h2 class="project-title">Lechuga</h2>
-                <p class="project-subtitle">Automated Food Service Platform</p>
-                <p class="project-description">
-                    Lechuga is a comprehensive automated food service solution that combines IoT kitchen equipment, AI-powered inventory management, and intuitive customer interfaces. Our platform enables restaurants and food services to operate with minimal human intervention while maintaining high quality and customer satisfaction.
-                </p>
-                
-                <div class="project-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">85%</span>
-                        <span class="stat-label">Reduction in Labor Costs</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">12</span>
-                        <span class="stat-label">Integrated Subsystems</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Orders per Day</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">99.2%</span>
-                        <span class="stat-label">System Uptime</span>
-                    </div>
+                <div class="project-logo">
+                    <img class="logo-class" src="./logo.png" alt="">
                 </div>
+                <h2 class="project-title">Lechuga</h2>
+                <p class="project-subtitle">Automated Food Service</p>
+                <p class="project-description">
+                    Lechuga is an automated food system designed to prepare and deliver bowl-based meals with minimal human involvement. The system integrates multiple subsystems including conveyors, hoppers, robotic arms, and a bowl dispenser coordinated by a central controller. Prototyping has been carried out using 3D-printed components, motors, sensors, and pneumatic actuators to achieve precise motion and ingredient dispensing. Control is managed through Teensy 4.1 microcontrollers communicating over CAN bus, with redundancy and error-handling logic built in to maximize reliability. Customer orders and payments are handled through a kiosk interface, and the platform can integrate with as many kiosks as needed for efficient order taking and completion.
+                </p>
             </div>
             
             <div class="media-container">
@@ -611,11 +598,9 @@
                         <div class="media-caption">Full Lechuga platform demonstration showing order-to-delivery process</div>
                     </div>
                     <div class="media-item">
-                        <div class="media-placeholder">
-                            [Kitchen Automation Video]<br>
-                            Robotic Food Preparation<br>
-                            2:10 duration
-                        </div>
+                        <video controls style="width: 100%; height: 250px;">
+                            <source src="./exampleVideo.mp4" type="video/mp4">
+                        </video>
                         <div class="media-caption">Automated kitchen equipment in action preparing fresh meals</div>
                     </div>
                 </div>
@@ -632,16 +617,15 @@
             <div class="subsystem">
                 <div class="subsystem-header">
                     <h3 class="subsystem-title">Customer Ordering Interface</h3>
-                    <p class="subsystem-subtitle">Mobile App & Web Platform</p>
+                    <p class="subsystem-subtitle">Web Application</p>
                     <p class="subsystem-description">
-                        Intuitive multi-platform ordering system with real-time menu updates, customization options, and seamless payment processing. Features AI-powered recommendations based on dietary preferences and order history.
+                        I developed both the user-facing interface and the backend logic for a customer kiosk, ensuring seamless communication between the frontend, backend, and the automated systems that process orders. Collaborating with a freelancer, I helped design the UI in Figma and generated HTML and CSS for the interface using AI-assisted tools, which I then vetted, debugged, and integrated into the kiosk application. On the backend, I used Node.js wrapped in Electron.js to handle HTTP requests from the frontend and manage order processing, including communication with automated systems to complete orders and safely respond to error commands. I also integrated the Stripe API for payment processing with error handling and designed the system to scale seamlessly, supporting as many kiosks as needed simultaneously. Additionally, I implemented order history tracking and uploaded data to a database for record keeping.
                     </p>
                     <div class="subsystem-tech">
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">React</span>
                         <span class="tech-tag">TypeScript</span>
                         <span class="tech-tag">Stripe API</span>
-                        <span class="tech-tag">Push Notifications</span>
+                        <span class="tech-tag">Node Js</span>
+                        <span class="tech-tag">Electron Js</span>
                     </div>
                 </div>
                 <div class="subsystem-content">
@@ -665,34 +649,22 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="subsystem-details">
-                        <div class="detail-item">
-                            <div class="detail-label">Key Features:</div>
-                            <div class="detail-value">Personalized recommendations, dietary filters, real-time order tracking, group ordering capabilities, loyalty program integration</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Performance:</div>
-                            <div class="detail-value">Sub-2 second load times, 99.8% uptime, supports 1000+ concurrent users</div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <!-- Kitchen Automation -->
             <div class="subsystem">
                 <div class="subsystem-header">
-                    <h3 class="subsystem-title">Automated Kitchen System</h3>
-                    <p class="subsystem-subtitle">Robotic Food Preparation & Assembly</p>
+                    <h3 class="subsystem-title">Order and Automation Controller</h3>
+                    <p class="subsystem-subtitle">System Logic and Coordination</p>
                     <p class="subsystem-description">
-                        Advanced robotic kitchen equipment controlled by our custom software stack. Handles ingredient preparation, cooking, assembly, and packaging with precision timing and quality control.
+                        I served as the central controller for the automated food system, managing the location and fulfillment of each order to ensure the correct ingredients were assembled in every bowl. The controller coordinated communication between the kiosk frontend, the Teensy motor controller, and human operators, sending high-level instructions to the MCU to complete orders and handling errors as they arose. I applied principles of concurrent programming to manage multiple simultaneous tasks and integrated a CAN bus for communication with the system’s microcontroller. I developed data structures to facilitate order communication between both the kiosk frontend and the central controller, as well as between the automated system MCU and the central controller. Additionally, I implemented an algorithm to determine bowl movement distances and select which hoppers to dispense ingredients from during each cycle, and I designed robust error-handling procedures that used APIs to notify operators when issues occurred.
                     </p>
                     <div class="subsystem-tech">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">ROS</span>
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">IoT Sensors</span>
-                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Concurrent Programming</span>
+                        <span class="tech-tag">Order Management</span>
+                        <span class="tech-tag">API Integration</span>
                     </div>
                 </div>
                 <div class="subsystem-content">
@@ -708,46 +680,23 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="subsystem-details">
-                        <div class="detail-item">
-                            <div class="detail-label">Capabilities:</div>
-                            <div class="detail-value">Ingredient washing, chopping, portioning, cooking, assembly, packaging, quality inspection</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Precision:</div>
-                            <div class="detail-value">±2g ingredient accuracy, consistent portion sizes, 15-second average assembly time</div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <!-- Inventory Management -->
             <div class="subsystem">
                 <div class="subsystem-header">
-                    <h3 class="subsystem-title">Smart Inventory Management</h3>
-                    <p class="subsystem-subtitle">AI-Powered Supply Chain Optimization</p>
+                    <h3 class="subsystem-title">Embedded Motor Controller and Actuator</h3>
+                    <p class="subsystem-subtitle">Automated System Control</p>
                     <p class="subsystem-description">
-                        Intelligent inventory tracking system using computer vision and predictive analytics to monitor ingredient levels, predict demand, and automatically trigger reorders to minimize waste and ensure availability.
+                        I used Teensy microcontrollers to control stepper motors, actuators, and receive input from sensors to operate a robotic arm, bowl dispenser, food dispensers, and conveyor system in a coordinated manner. I implemented stepper motor control using hardware peripheral timers and applied acceleration and deceleration curves to ensure smooth motion. CAN bus communication was established with the Order and Automation Controller to synchronize actions across subsystems, which were coordinated using state machine logic. I designed and integrated sensors to monitor food levels and used linear Hall-effect sensors to implement zeroing mechanisms for the conveyor and robotic arm. Additionally, I developed a CMake build system to support cross-compiling and flashing the project onto the Teensy 4.1.
                     </p>
                     <div class="subsystem-tech">
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Time Series DB</span>
-                        <span class="tech-tag">Supply Chain APIs</span>
-                    </div>
-                </div>
-                <div class="subsystem-content">
-                    <div class="subsystem-details">
-                        <div class="detail-item">
-                            <div class="detail-label">Monitoring:</div>
-                            <div class="detail-value">Real-time ingredient levels, expiration tracking, quality assessment, temperature monitoring</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Optimization:</div>
-                            <div class="detail-value">Demand forecasting, automatic reordering, waste reduction algorithms, supplier integration</div>
-                        </div>
+                        <span class="tech-tag">C/C++</span>
+                        <span class="tech-tag">Actuator Control</span>
+                        <span class="tech-tag">CanBus</span>
+                        <span class="tech-tag">CMake</span>
+                        <span class="tech-tag">Sensor Integration</span>
                     </div>
                 </div>
             </div>
