@@ -542,7 +542,7 @@
                     <img src="./jasonImage.jpg" class="member-photo"></img>
                     <h3 class="member-name">Jason Gomez</h3>
                     <p class="member-role">Software and Systems Integration</p>
-                    <p class="member-bio">Entrepreneurial engineering student passionate about robotics, automation, and embedded systems, with experience in a full-stack automated food service platform. Focused on real-time systems that bridge hardware and software while driving meaningful impact in efficiency and user experience.</p>
+                    <p class="member-bio">Entrepreneurial engineering student passionate about robotics, automation, and embedded systems, with experience in a full-stack automated food service. Focused on bridging hardware and software while driving meaningful impact in efficiency and user experience.</p>
                     <div class="member-skills">
                         <span class="skill-tag">C/C++</span>
                         <span class="skill-tag">Python</span>
@@ -555,17 +555,15 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo">[Professional Photo]</div>
-                    <h3 class="member-name">Jordan Smith</h3>
-                    <p class="member-role">Frontend Developer & UX Designer</p>
-                    <p class="member-bio">Specializing in user experience design and modern frontend development. Dedicated to creating intuitive interfaces that make food ordering and kitchen management seamless and enjoyable.</p>
+                    <img src="./Alexis.jpeg" class="member-photo"></img>
+                    <h3 class="member-name">Alexis Mejia</h3>
+                    <p class="member-role">Electrical Systems Design and Development</p>
+                    <p class="member-bio">Entrepreneurial engineering student invested in electrical system design, manufacturing and development with experience in power delivery and PCB development.</p>
                     <div class="member-skills">
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">React Native</span>
-                        <span class="skill-tag">CSS/SCSS</span>
-                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">KiCad</span>
+                        <span class="skill-tag">PCB Design</span>
+                        <span class="skill-tag">Power Delivery</span>
+                        <span class="skill-tag">Autodesk Fusion 360</span>
                     </div>
                 </div>
             </div>
@@ -589,13 +587,16 @@
             <div class="media-container">
                 <div class="media-grid">
                     <div class="media-item">
-                        <div class="media-caption">Full Lechuga platform demonstration showing order-to-delivery process</div>
+                        <video controls style="width: 100%; height: 250px;">
+                            <source src="./LongerVideo.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-caption">System example (1) run from previous version</div>
                     </div>
                     <div class="media-item">
                         <video controls style="width: 100%; height: 250px;">
                             <source src="./exampleVideo.mp4" type="video/mp4">
                         </video>
-                        <div class="media-caption">System test run from previous version</div>
+                        <div class="media-caption">System example (2) run from previous version</div>
                     </div>
                 </div>
             </div>
@@ -686,17 +687,14 @@
             <!-- Management Dashboard -->
             <div class="subsystem">
                 <div class="subsystem-header">
-                    <h3 class="subsystem-title">Operations Dashboard</h3>
-                    <p class="subsystem-subtitle">Real-time Analytics & Control Center</p>
+                    <h3 class="subsystem-title">Actuator Controlller and IO Expansion PCB</h3>
+                    <p class="subsystem-subtitle">Automated System Electrical</p>
                     <p class="subsystem-description">
-                        Comprehensive management interface providing real-time insights into operations, performance metrics, financial analytics, and system controls for restaurant operators and franchise managers.
+                        I developed a custom PCB using a Teensy 4.1 microcontroller and MCP23017 I/O expanders to control a system of over 15 stepper motors. The system required precise multi-speed operation and synchronized motion across all motors, which was achieved through optimized I²C communication and expansion. To support reliable power delivery, the board incorporated a 24V-to-5V voltage regulator capable of handling both supply voltages, improving overall system stability. Filtering capacitors were added to suppress noise and voltage ripple, ensuring clean power for sensitive digital and analog components. To enhance robustness, the PCB included redundant power-failure protection, short-circuit safeguards, and overcurrent detection. All microcontrollers and ICs were mounted on headers rather than soldered directly, allowing for rapid replacement and reducing downtime during repairs. The modular design also supported scalability, allowing additional MCP23017 expanders to be integrated for future system growth. Careful attention was given to grounding, trace routing, and power distribution to maintain signal integrity under heavy loads. <b>- Alexis Mejia</b> 
                     </p>
                     <div class="subsystem-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">WebSocket</span>
-                        <span class="tech-tag">Chart.js</span>
-                        <span class="tech-tag">Real-time Analytics</span>
+                        <span class="tech-tag">KiCad</span>
+                        <span class="tech-tag">PCB Design</span>
                     </div>
                 </div>
                 <div class="subsystem-content">
@@ -704,23 +702,13 @@
                         <div class="media-grid">
                             <div class="media-item">
                                 <div class="media-placeholder">
-                                    [Dashboard Screenshots]<br>
-                                    Analytics Interface<br>
-                                    Real-time Metrics
+                                   <img src="TeensyPCB.jpeg" 
+                                    alt="Description" 
+                                    style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                                    onclick="window.open(this.src, '_blank')">
                                 </div>
-                                <div class="media-caption">Live operations dashboard showing key performance indicators</div>
+                                <div class="media-caption">KiCad Actuator Controller Render (click image to expand)</div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="subsystem-details">
-                        <div class="detail-item">
-                            <div class="detail-label">Analytics:</div>
-                            <div class="detail-value">Sales performance, order patterns, ingredient usage, equipment efficiency, customer satisfaction</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Controls:</div>
-                            <div class="detail-value">Menu management, pricing adjustments, equipment control, staff scheduling, maintenance alerts</div>
                         </div>
                     </div>
                 </div>
@@ -729,28 +717,27 @@
             <!-- Delivery Integration -->
             <div class="subsystem">
                 <div class="subsystem-header">
-                    <h3 class="subsystem-title">Delivery & Logistics</h3>
-                    <p class="subsystem-subtitle">Multi-Platform Delivery Integration</p>
+                    <h3 class="subsystem-title">Zeroing Mechanism PCB</h3>
+                    <p class="subsystem-subtitle">Linear Hall Effect Sensor PCB</p>
                     <p class="subsystem-description">
-                        Seamless integration with major delivery platforms and custom logistics optimization. Real-time tracking, route optimization, and coordination with automated kitchen timing for optimal delivery experience.
+                        I designed a compact PCB integrating a DRV5055 Hall effect sensor for magnetic field detection and signal output. The sensor operates on a regulated 3.3V supply and provides an analog output voltage proportional to the magnetic field strength, enabling precise measurement and real-time monitoring of nearby magnetic sources. A polarized capacitor was added for power supply filtering, reducing noise and stabilizing the sensor’s performance under fluctuating load conditions. The circuit was designed with a screw terminal input for straightforward connection to external systems and mounting holes for easy mechanical integration. Attention was given to grounding and power routing to minimize interference and ensure accurate sensor readings. <b>- Alexis Mejia</b>
                     </p>
                     <div class="subsystem-tech">
-                        <span class="tech-tag">REST APIs</span>
-                        <span class="tech-tag">GraphQL</span>
-                        <span class="tech-tag">Google Maps API</span>
-                        <span class="tech-tag">WebSocket</span>
-                        <span class="tech-tag">Route Optimization</span>
+                        <span class="tech-tag">KiCad</span>
+                        <span class="tech-tag">PCB Development</span>
+                        <span class="tech-tag">Analog Sensor</span>
                     </div>
                 </div>
                 <div class="subsystem-content">
-                    <div class="subsystem-details">
-                        <div class="detail-item">
-                            <div class="detail-label">Integrations:</div>
-                            <div class="detail-value">DoorDash, UberEats, Grubhub, custom delivery fleet management, third-party logistics providers</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">Optimization:</div>
-                            <div class="detail-value">Dynamic delivery time estimation, route optimization, kitchen timing coordination, customer communication</div>
+                    <div class="media-container">
+                        <div class="media-grid">
+                            <div class="media-item">
+                                <img src="AnalogPCB.jpeg" 
+                                    alt="Description" 
+                                    style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                                    onclick="window.open(this.src, '_blank')">
+                                <div class="media-caption">KiCad Analog Sensor Render (click image to expand)</div>
+                            </div>
                         </div>
                     </div>
                 </div>
