@@ -520,8 +520,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#lechuga">Lechuga Project</a></li>
-                <li><a href="#subsystems">Subsystems</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#project-components">Project Components</a></li>
             </ul>
             <button class="mobile-nav-toggle">☰</button>
         </div>
@@ -590,16 +589,13 @@
             <div class="media-container">
                 <div class="media-grid">
                     <div class="media-item">
-                         <video controls style="width: 100%; height: 250px;">
-                            <source src="./explanationVideo.mp4" type="video/mp4">
-                        </video>
                         <div class="media-caption">Full Lechuga platform demonstration showing order-to-delivery process</div>
                     </div>
                     <div class="media-item">
                         <video controls style="width: 100%; height: 250px;">
                             <source src="./exampleVideo.mp4" type="video/mp4">
                         </video>
-                        <div class="media-caption">Automated kitchen equipment in action preparing fresh meals</div>
+                        <div class="media-caption">System test run from previous version</div>
                     </div>
                 </div>
             </div>
@@ -607,9 +603,9 @@
     </section>
 
     <!-- Subsystems Section -->
-    <section class="section subsystems-section" id="subsystems">
+    <section class="section subsystems-section" id="project-components">
         <div class="section-content">
-            <h2 class="section-title">System Components</h2>
+            <h2 class="section-title">Project Components</h2>
             
             <!-- Ordering Interface -->
             <div class="subsystem">
@@ -617,7 +613,7 @@
                     <h3 class="subsystem-title">Customer Ordering Interface</h3>
                     <p class="subsystem-subtitle">Web Application</p>
                     <p class="subsystem-description">
-                        I developed both the user-facing interface and the backend logic for a customer kiosk, ensuring seamless communication between the frontend, backend, and the automated systems that process orders. Collaborating with a freelancer, I helped design the UI in Figma and generated HTML and CSS for the interface using AI-assisted tools, which I then vetted, debugged, and integrated into the kiosk application. On the backend, I used Node.js wrapped in Electron.js to handle HTTP requests from the frontend and manage order processing, including communication with automated systems to complete orders and safely respond to error commands. I also integrated the Stripe API for payment processing with error handling and designed the system to scale seamlessly, supporting as many kiosks as needed simultaneously. Additionally, I implemented order history tracking and uploaded data to a database for record keeping.
+                        I developed both the user-facing interface and the backend logic for a customer kiosk, ensuring seamless communication between the frontend, backend, and the automated systems that process orders. Collaborating with a freelancer, I helped design the UI in Figma and generated HTML and CSS for the interface using AI-assisted tools, which I then vetted, debugged, and integrated into the kiosk application. On the backend, I used Node.js wrapped in Electron.js to handle HTTP requests from the frontend and manage order processing, including communication with automated systems to complete orders and safely respond to error commands. I also integrated the Stripe API for payment processing with error handling and designed the system to scale seamlessly, supporting as many kiosks as needed simultaneously. Additionally, I implemented order history tracking and uploaded data to a database for record keeping.<b> - Jason Gomez</b>
                     </p>
                     <div class="subsystem-tech">
                         <span class="tech-tag">TypeScript</span>
@@ -636,15 +632,16 @@
                                     style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
                                     onclick="window.open(this.src, '_blank')">
                                 </div>
-                                <div class="media-caption">Mobile ordering interface with real-time customization</div>
+                                <div class="media-caption">Item page UI for kiosk (click image to expand)</div>
                             </div>
                             <div class="media-item">
                                 <div class="media-placeholder">
-                                    [User Experience Video]<br>
-                                    Complete Order Journey<br>
-                                    1:30 duration
+                                   <img src="CheckoutPageImage.JPG" 
+                                    alt="Description" 
+                                    style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                                    onclick="window.open(this.src, '_blank')">
                                 </div>
-                                <div class="media-caption">End-to-end user experience from browse to delivery</div>
+                                <div class="media-caption">Checkout page UI for kiosk (click image to expand)</div>
                             </div>
                         </div>
                     </div>
@@ -657,27 +654,13 @@
                     <h3 class="subsystem-title">Order and Automation Controller</h3>
                     <p class="subsystem-subtitle">System Logic and Coordination</p>
                     <p class="subsystem-description">
-                        I served as the central controller for the automated food system, managing the location and fulfillment of each order to ensure the correct ingredients were assembled in every bowl. The controller coordinated communication between the kiosk frontend, the Teensy motor controller, and human operators, sending high-level instructions to the MCU to complete orders and handling errors as they arose. I applied principles of concurrent programming to manage multiple simultaneous tasks and integrated a CAN bus for communication with the system’s microcontroller. I developed data structures to facilitate order communication between both the kiosk frontend and the central controller, as well as between the automated system MCU and the central controller. Additionally, I implemented an algorithm to determine bowl movement distances and select which hoppers to dispense ingredients from during each cycle, and I designed robust error-handling procedures that used APIs to notify operators when issues occurred.
+                        I served as the central controller for the automated food system, managing the location and fulfillment of each order to ensure the correct ingredients were assembled in every bowl. The controller coordinated communication between the kiosk frontend, the Teensy motor controller, and human operators, sending high-level instructions to the MCU to complete orders and handling errors as they arose. I applied principles of concurrent programming to manage multiple simultaneous tasks and integrated a CAN bus for communication with the system’s microcontroller. I developed data structures to facilitate order communication between both the kiosk frontend and the central controller, as well as between the automated system MCU and the central controller. Additionally, I implemented an algorithm to determine bowl movement distances and select which hoppers to dispense ingredients from during each cycle, and I designed robust error-handling procedures that used APIs to notify operators when issues occurred.<b> - Jason Gomez</b>
                     </p>
                     <div class="subsystem-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Concurrent Programming</span>
                         <span class="tech-tag">Order Management</span>
                         <span class="tech-tag">API Integration</span>
-                    </div>
-                </div>
-                <div class="subsystem-content">
-                    <div class="media-container">
-                        <div class="media-grid">
-                            <div class="media-item">
-                                <div class="media-placeholder">
-                                    [Kitchen Robotics Video]<br>
-                                    Automated Prep & Assembly<br>
-                                    4:20 duration
-                                </div>
-                                <div class="media-caption">Robotic arms preparing and assembling fresh salads</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -688,7 +671,7 @@
                     <h3 class="subsystem-title">Embedded Motor Controller and Actuator</h3>
                     <p class="subsystem-subtitle">Automated System Control</p>
                     <p class="subsystem-description">
-                        I used Teensy microcontrollers to control stepper motors, actuators, and receive input from sensors to operate a robotic arm, bowl dispenser, food dispensers, and conveyor system in a coordinated manner. I implemented stepper motor control using hardware peripheral timers and applied acceleration and deceleration curves to ensure smooth motion. CAN bus communication was established with the Order and Automation Controller to synchronize actions across subsystems, which were coordinated using state machine logic. I designed and integrated sensors to monitor food levels and used linear Hall-effect sensors to implement zeroing mechanisms for the conveyor and robotic arm. Additionally, I developed a CMake build system to support cross-compiling and flashing the project onto the Teensy 4.1.
+                        I used Teensy microcontrollers to control stepper motors, actuators, and receive input from sensors to operate a robotic arm, bowl dispenser, food dispensers, and conveyor system in a coordinated manner. I implemented stepper motor control using hardware peripheral timers and applied acceleration and deceleration curves to ensure smooth motion. CAN bus communication was established with the Order and Automation Controller to synchronize actions across subsystems, which were coordinated using state machine logic. I designed and integrated sensors to monitor food levels and used linear Hall-effect sensors to implement zeroing mechanisms for the conveyor and robotic arm. Additionally, I developed a CMake build system to support cross-compiling and flashing the project onto the Teensy 4.1. <b> - Jason Gomez</b>
                     </p>
                     <div class="subsystem-tech">
                         <span class="tech-tag">C/C++</span>
@@ -775,47 +758,9 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-        <div class="section-content">
-            <div class="contact-content">
-                <h2 class="section-title">Let's Connect</h2>
-                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Interested in learning more about our work on Lechuga or discussing potential opportunities? We'd love to hear from you.
-                </p>
-                
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3 class="contact-name">Alex Chen</h3>
-                        <div class="contact-info">
-                            <p><strong>Email:</strong> <a href="mailto:alex.chen.dev@gmail.com">alex.chen.dev@gmail.com</a></p>
-                            <p><strong>Phone:</strong> +1 (415) 555-0123</p>
-                            <p><strong>LinkedIn:</strong> <a href="#">/in/alexchen-dev</a></p>
-                            <p><strong>GitHub:</strong> <a href="#">@alexchen-code</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h3 class="contact-name">Jordan Smith</h3>
-                        <div class="contact-info">
-                            <p><strong>Email:</strong> <a href="mailto:jordan.smith.ux@gmail.com">jordan.smith.ux@gmail.com</a></p>
-                            <p><strong>Phone:</strong> +1 (415) 555-0124</p>
-                            <p><strong>LinkedIn:</strong> <a href="#">/in/jordansmith-ux</a></p>
-                            <p><strong>Portfolio:</strong> <a href="#">jordandesigns.com</a></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 3rem;">
-                    <p style="opacity: 0.8;">Want to learn more about Lechuga? <a href="mailto:info@lechuga.tech" style="color: white; font-weight: 600;">info@lechuga.tech</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Alex Chen & Jordan Smith. All rights reserved.</p>
+        <p>&copy; 2025 Jason Gomez & Alexis Mejia</p>
     </footer>
 </body>
 </html>
