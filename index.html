@@ -1,438 +1,873 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Alex Chen - Software Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen & Jordan Smith | Software Developers</title>
     <style>
-        body {
+        * {
             margin: 0;
-            padding: 8px;
-            background-color: #FFFFFF;
-            font-family: "MS Sans Serif", sans-serif;
-            font-size: 11px;
-            color: #000000;
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .container {
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+        
+        /* Hero Section */
+        .hero {
             width: 100%;
-            max-width: 640px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fffe 0%, #f0f9f7 100%);
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            color: #2d5a3d;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero p {
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            color: #5a7c65;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #66bb6a, #4caf50);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e8f2ea;
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d5a3d;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #5a7c65;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #4caf50;
+        }
+        
+        /* Section Base */
+        .section {
+            width: 100%;
+            padding: 4rem 2rem;
+        }
+        
+        .section-content {
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        .header-logo {
+        .section-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            color: #2d5a3d;
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
         }
         
-        .logo-text {
-            font-size: 36px;
-            font-weight: bold;
-            color: #FF0000;
-            text-shadow: 2px 2px 0px #800000;
-            letter-spacing: 2px;
-            font-family: "Times New Roman", serif;
-            margin: 0;
-            image-rendering: pixelated;
-            filter: contrast(1.2);
+        /* Team Section */
+        .team-section {
+            background: #f8fffe;
         }
         
-        .tagline {
-            font-size: 12px;
-            color: #000080;
-            font-weight: bold;
-            margin-top: 4px;
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
         }
         
-        .main-table {
-            width: 100%;
-            border: 2px solid #000000;
-            cellpadding: 0;
-            cellspacing: 0;
-            background-color: #C0C0C0;
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
         
-        .section-header {
-            background-color: #000080;
-            color: #FFFFFF;
-            font-weight: bold;
-            font-size: 11px;
-            padding: 4px 6px;
-            border-bottom: 1px solid #000000;
-            text-transform: uppercase;
+        .team-member:hover {
+            transform: translateY(-5px);
         }
         
-        .content-cell {
-            padding: 8px;
-            background-color: #FFFFFF;
-            vertical-align: top;
-            border-right: 1px solid #808080;
-        }
-        
-        .link-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .link-list li {
-            margin-bottom: 2px;
-            font-size: 11px;
-        }
-        
-        .main-link {
-            color: #0000EE;
-            text-decoration: underline;
-            font-weight: normal;
-        }
-        
-        .main-link:hover {
-            color: #FF0000;
-            background-color: #FFFF00;
-        }
-        
-        .main-link:visited {
-            color: #551A8B;
-        }
-        
-        .bullet {
-            color: #FF0000;
-            font-weight: bold;
-            margin-right: 4px;
-        }
-        
-        .img-placeholder {
-            width: 100px;
-            height: 75px;
-            background-color: #C0C0C0;
-            border: 2px inset #C0C0C0;
-            float: right;
-            margin: 0 0 8px 8px;
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 9px;
-            color: #000000;
-            text-align: center;
-            image-rendering: pixelated;
-            font-family: "MS Sans Serif", sans-serif;
+            font-size: 0.9rem;
+            color: #5a7c65;
+            border: 3px solid #e8f2ea;
         }
         
-        .video-placeholder {
-            width: 160px;
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d5a3d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-role {
+            color: #66bb6a;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .member-bio {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: #e8f5e8;
+            color: #2d5a3d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Main Project Section */
+        .main-project-section {
+            background: white;
+        }
+        
+        .project-overview {
+            background: linear-gradient(135deg, #66bb6a, #4caf50);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .project-logo {
+            width: 120px;
             height: 120px;
-            background-color: #000000;
-            border: 2px inset #C0C0C0;
-            float: left;
-            margin: 0 8px 8px 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FFFFFF;
-            font-size: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .project-title {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .project-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .project-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
             text-align: center;
-            image-rendering: pixelated;
         }
         
-        .content-text {
-            text-align: justify;
-            line-height: 1.3;
-            margin-bottom: 8px;
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
         }
         
-        .footer-cell {
-            background-color: #E0E0E0;
-            padding: 6px;
-            text-align: center;
-            border-top: 1px solid #808080;
-            font-size: 10px;
-            color: #000000;
+        .stat-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
         }
         
-        .divider {
-            height: 1px;
-            background-color: #808080;
-            margin: 8px 0;
+        /* Media Container */
+        .media-container {
+            margin: 2rem 0;
         }
         
-        .two-column {
-            width: 48%;
-            float: left;
-            margin-right: 4%;
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
         
-        .skills-table {
+        .media-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .media-placeholder {
             width: 100%;
-            border: 1px solid #808080;
-            cellpadding: 2;
-            cellspacing: 0;
-            font-size: 10px;
+            height: 250px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1rem;
+            border: 2px dashed #ddd;
+            text-align: center;
+            padding: 1rem;
         }
         
-        .skills-header {
-            background-color: #C0C0C0;
-            font-weight: bold;
-            padding: 3px;
-            border-bottom: 1px solid #808080;
+        .media-caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.9rem;
+            color: #666;
             text-align: center;
         }
         
-        .skills-cell {
-            padding: 3px;
-            border-bottom: 1px dotted #C0C0C0;
+        /* Subsystems Section */
+        .subsystems-section {
+            background: #f8fffe;
+        }
+        
+        .subsystem {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .subsystem-header {
+            background: linear-gradient(135deg, #f0f9f7, #e8f5e8);
+            padding: 2.5rem 2rem;
+            border-left: 5px solid #66bb6a;
+        }
+        
+        .subsystem-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d5a3d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subsystem-subtitle {
+            color: #66bb6a;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .subsystem-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .subsystem-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            background: #e8f5e8;
+            color: #2d5a3d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .subsystem-content {
+            padding: 2rem;
+        }
+        
+        .subsystem-details {
+            margin-bottom: 2rem;
+        }
+        
+        .detail-item {
+            margin-bottom: 1rem;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2d5a3d;
+            margin-bottom: 0.3rem;
+        }
+        
+        .detail-value {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #2d5a3d, #4caf50);
+            color: white;
+        }
+        
+        .contact-content {
+            text-align: center;
+        }
+        
+        .contact-section .section-title {
+            color: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
         
         .contact-info {
-            background-color: #FFFFCC;
-            border: 1px solid #808080;
-            padding: 8px;
-            margin: 8px 0;
+            opacity: 0.9;
         }
         
-        .highlight-text {
-            background-color: #FFFF00;
-            padding: 1px 2px;
+        .contact-info a {
+            color: white;
+            text-decoration: none;
         }
         
-        .clearfix::after {
-            content: "";
-            display: table;
-            clear: both;
+        .contact-info a:hover {
+            text-decoration: underline;
         }
         
-        .pixel-border {
-            border: 2px outset #C0C0C0;
-            background-color: #C0C0C0;
-            padding: 2px;
+        /* Footer */
+        .footer {
+            background: #2d5a3d;
+            color: white;
+            text-align: center;
+            padding: 2rem;
         }
         
-        .button-style {
-            background-color: #C0C0C0;
-            border: 2px outset #C0C0C0;
-            padding: 2px 6px;
-            font-size: 10px;
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #2d5a3d;
+            font-size: 1.5rem;
             cursor: pointer;
-            font-family: "MS Sans Serif", sans-serif;
         }
         
-        .button-style:hover {
-            background-color: #E0E0E0;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .hero {
+                padding: 1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .button-style:active {
-            border: 2px inset #C0C0C0;
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
         
-        .status-bar {
-            background-color: #C0C0C0;
-            border: 1px inset #C0C0C0;
-            padding: 2px 4px;
-            font-size: 10px;
-            margin-top: 8px;
+        /* Section spacing adjustments */
+        .section:first-of-type {
+            padding-top: 6rem;
         }
         
-        /* Pixelated effect for text */
-        .pixelated-text {
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            filter: contrast(1.1);
+        /* Hide empty media containers */
+        .media-container:empty {
+            display: none;
+        }
+        
+        .media-container:has(.media-grid:empty) {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header Logo (Yahoo-style) -->
-        <div class="header-logo">
-            <h1 class="logo-text pixelated-text">Alex Chen!</h1>
-            <div class="tagline">Professional Software Developer Portfolio</div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#lechuga">Lechuga Project</a></li>
+                <li><a href="#subsystems">Subsystems</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-nav-toggle">☰</button>
         </div>
-        
-        <!-- Main Content Table -->
-        <table class="main-table">
-            <tr>
-                <td class="section-header" colspan="3">Welcome to Alex Chen's Professional Portfolio</td>
-            </tr>
-            <tr>
-                <!-- Left Column -->
-                <td class="content-cell" width="33%">
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">About & Background</div>
-                    <ul class="link-list">
-                        <li><span class="bullet">•</span><a href="#bio" class="main-link">Professional Biography</a></li>
-                        <li><span class="bullet">•</span><a href="#education" class="main-link">Education & Training</a></li>
-                        <li><span class="bullet">•</span><a href="#resume" class="main-link">Download Resume (PDF)</a></li>
-                        <li><span class="bullet">•</span><a href="#references" class="main-link">Professional References</a></li>
-                    </ul>
-                    
-                    <div class="divider"></div>
-                    
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">Current Projects</div>
-                    <ul class="link-list">
-                        <li><span class="bullet">•</span><a href="#ecommerce" class="main-link">E-commerce Platform</a></li>
-                        <li><span class="bullet">•</span><a href="#intranet" class="main-link">Corporate Intranet</a></li>
-                        <li><span class="bullet">•</span><a href="#database" class="main-link">CRM System</a></li>
-                        <li><span class="bullet">•</span><a href="#web" class="main-link">Web Applications</a></li>
-                    </ul>
-                    
-                    <div class="divider"></div>
-                    
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">Technical Skills</div>
-                    <ul class="link-list">
-                        <li><span class="bullet">•</span><a href="#programming" class="main-link">Programming Languages</a></li>
-                        <li><span class="bullet">•</span><a href="#web-tech" class="main-link">Web Technologies</a></li>
-                        <li><span class="bullet">•</span><a href="#databases" class="main-link">Database Systems</a></li>
-                        <li><span class="bullet">•</span><a href="#tools" class="main-link">Development Tools</a></li>
-                    </ul>
-                </td>
-                
-                <!-- Center Column -->
-                <td class="content-cell" width="34%">
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">Featured Projects</div>
-                    
-                    <div class="img-placeholder">
-                        [E-commerce<br>Screenshot]
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Alex Chen & Jordan Smith</h1>
+        <p>Full-stack developers passionate about creating innovative solutions. Currently collaborating on Lechuga, an automated food service platform that's revolutionizing the way people experience fresh, healthy meals.</p>
+        <a href="#lechuga" class="cta-button">View Our Project</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section team-section" id="about">
+        <div class="section-content">
+            <h2 class="section-title">About Us</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">[Professional Photo]</div>
+                    <h3 class="member-name">Alex Chen</h3>
+                    <p class="member-role">Full-Stack Developer</p>
+                    <p class="member-bio">Passionate about backend architecture, API design, and building scalable systems. Focused on creating robust infrastructure that can handle complex food service operations and real-time data processing.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">GraphQL</span>
                     </div>
-                    <div class="content-text">
-                        <strong>TechStore Online</strong><br>
-                        Complete e-commerce solution with shopping cart, payment processing, and inventory management. Built using ASP and SQL Server.
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">[Professional Photo]</div>
+                    <h3 class="member-name">Jordan Smith</h3>
+                    <p class="member-role">Frontend Developer & UX Designer</p>
+                    <p class="member-bio">Specializing in user experience design and modern frontend development. Dedicated to creating intuitive interfaces that make food ordering and kitchen management seamless and enjoyable.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">CSS/SCSS</span>
+                        <span class="skill-tag">Firebase</span>
                     </div>
-                    
-                    <div class="video-placeholder">
-                        [Demo Video<br>Click to Play<br>RealVideo Format]
-                    </div>
-                    <div class="content-text">
-                        <strong>Intranet Portal</strong><br>
-                        Employee portal system for 500+ users featuring document management, project tracking, and communication tools.
-                    </div>
-                    
-                    <div style="clear: both;"></div>
-                    <div class="divider"></div>
-                    
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">Professional Experience</div>
-                    <ul class="link-list">
-                        <li><span class="bullet">•</span><a href="#current" class="main-link">Senior Web Developer (Current)</a></li>
-                        <li><span class="bullet">•</span><a href="#previous" class="main-link">Software Developer</a></li>
-                        <li><span class="bullet">•</span><a href="#junior" class="main-link">Junior Programmer</a></li>
-                        <li><span class="bullet">•</span><a href="#freelance" class="main-link">Freelance Projects</a></li>
-                    </ul>
-                </td>
-                
-                <!-- Right Column -->
-                <td class="content-cell" width="33%">
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">Contact Information</div>
-                    
-                    <div class="contact-info">
-                        <strong>Alex Chen</strong><br>
-                        Software Developer<br><br>
-                        <strong>Email:</strong> alex.chen@email.com<br>
-                        <strong>Phone:</strong> (415) 555-0123<br>
-                        <strong>Location:</strong> San Francisco, CA<br>
-                        <strong>Available:</strong> <span class="highlight-text">Yes</span>
-                    </div>
-                    
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">Certifications</div>
-                    <ul class="link-list">
-                        <li><span class="bullet">•</span><a href="#mcp" class="main-link">Microsoft Certified Professional</a></li>
-                        <li><span class="bullet">•</span><a href="#oracle" class="main-link">Oracle Database Associate</a></li>
-                        <li><span class="bullet">•</span><a href="#java" class="main-link">Sun Java Programmer</a></li>
-                        <li><span class="bullet">•</span><a href="#web" class="main-link">Adobe Web Specialist</a></li>
-                    </ul>
-                    
-                    <div class="divider"></div>
-                    
-                    <div style="font-weight: bold; color: #000080; margin-bottom: 6px;">Quick Downloads</div>
-                    <ul class="link-list">
-                        <li><span class="bullet">•</span><a href="#resume-pdf" class="main-link">Resume (PDF - 45KB)</a></li>
-                        <li><span class="bullet">•</span><a href="#portfolio-zip" class="main-link">Portfolio Archive (ZIP)</a></li>
-                        <li><span class="bullet">•</span><a href="#code-samples" class="main-link">Code Samples</a></li>
-                        <li><span class="bullet">•</span><a href="#screenshots" class="main-link">Project Screenshots</a></li>
-                    </ul>
-                    
-                    <div class="divider"></div>
-                    
-                    <div class="pixel-border" style="text-align: center; margin-top: 8px;">
-                        <div style="font-size: 10px; font-weight: bold;">Site Statistics</div>
-                        <div style="font-size: 9px; margin-top: 4px;">
-                            Visitors Today: 47<br>
-                            Total Visits: 2,891<br>
-                            Last Updated: Sept 9, 2025
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        
-        <!-- Detailed Content Sections -->
-        <table class="main-table" style="margin-top: 8px;">
-            <tr>
-                <td class="section-header">Detailed Project Information</td>
-            </tr>
-            <tr>
-                <td class="content-cell">
-                    <div class="two-column">
-                        <h3 style="color: #000080; font-size: 12px; margin-top: 0;">E-commerce Platform Details</h3>
-                        <div class="img-placeholder" style="width: 80px; height: 60px; float: none; margin: 0 0 4px 0;">
-                            [Screenshot]
-                        </div>
-                        <p class="content-text">
-                            Comprehensive online shopping system handling 10,000+ products with real-time inventory tracking, secure payment processing via SSL, and automated order fulfillment. Features include customer accounts, order history, and administrative backend.
-                        </p>
-                        <p style="font-size: 10px; color: #666666;">
-                            <strong>Technologies:</strong> ASP 3.0, SQL Server 7.0, JavaScript, HTML 4.0, CSS
-                        </p>
-                    </div>
-                    
-                    <div class="two-column">
-                        <h3 style="color: #000080; font-size: 12px; margin-top: 0;">Corporate Intranet System</h3>
-                        <div class="video-placeholder" style="width: 80px; height: 60px; float: none; margin: 0 0 4px 0;">
-                            [Demo]
-                        </div>
-                        <p class="content-text">
-                            Internal portal serving 500+ employees with document management, project collaboration tools, employee directory, and integration with existing HR systems. Reduced email traffic by 40% and improved cross-departmental communication.
-                        </p>
-                        <p style="font-size: 10px; color: #666666;">
-                            <strong>Technologies:</strong> Perl/CGI, MySQL, Apache, HTML, JavaScript
-                        </p>
-                    </div>
-                    
-                    <div style="clear: both;"></div>
-                    <div class="divider"></div>
-                    
-                    <h3 style="color: #000080; font-size: 12px;">Technical Expertise Summary</h3>
-                    
-                    <table class="skills-table">
-                        <tr>
-                            <td class="skills-header">Programming</td>
-                            <td class="skills-header">Web Development</td>
-                            <td class="skills-header">Databases</td>
-                        </tr>
-                        <tr>
-                            <td class="skills-cell">C/C++<br>Visual Basic 6.0<br>Java 1.2<br>Perl 5.0<br>JavaScript</td>
-                            <td class="skills-cell">HTML 4.0<br>CSS 1.0<br>ASP 3.0<br>CGI/Perl<br>Apache/IIS</td>
-                            <td class="skills-cell">SQL Server 7.0<br>MySQL 3.23<br>Oracle 8i<br>MS Access 2000<br>ODBC/ADO</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        
-        <!-- Footer -->
-        <table class="main-table" style="margin-top: 8px;">
-            <tr>
-                <td class="footer-cell">
-                    <div>Copyright © 1999-2025 Alex Chen. All rights reserved.</div>
-                    <div style="margin-top: 2px;">
-                        Best viewed with Netscape Navigator 4.0+ or Internet Explorer 5.0+ | Optimized for 800x600 resolution
-                    </div>
-                </td>
-            </tr>
-        </table>
-        
-        <div class="status-bar">
-            Page loaded in 0.3 seconds | Last modified: September 9, 2025 at 2:47 PM PST | Valid HTML 4.0
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Main Project Section -->
+    <section class="section main-project-section" id="lechuga">
+        <div class="section-content">
+            <div class="project-overview">
+                <div class="project-logo">[Lechuga Logo]</div>
+                <h2 class="project-title">Lechuga</h2>
+                <p class="project-subtitle">Automated Food Service Platform</p>
+                <p class="project-description">
+                    Lechuga is a comprehensive automated food service solution that combines IoT kitchen equipment, AI-powered inventory management, and intuitive customer interfaces. Our platform enables restaurants and food services to operate with minimal human intervention while maintaining high quality and customer satisfaction.
+                </p>
+                
+                <div class="project-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">85%</span>
+                        <span class="stat-label">Reduction in Labor Costs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Integrated Subsystems</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Orders per Day</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.2%</span>
+                        <span class="stat-label">System Uptime</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="media-container">
+                <div class="media-grid">
+                    <div class="media-item">
+                        <div class="media-placeholder">
+                            [Main Demo Video]<br>
+                            Complete System Overview<br>
+                            3:45 duration
+                        </div>
+                        <div class="media-caption">Full Lechuga platform demonstration showing order-to-delivery process</div>
+                    </div>
+                    <div class="media-item">
+                        <div class="media-placeholder">
+                            [Kitchen Automation Video]<br>
+                            Robotic Food Preparation<br>
+                            2:10 duration
+                        </div>
+                        <div class="media-caption">Automated kitchen equipment in action preparing fresh meals</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subsystems Section -->
+    <section class="section subsystems-section" id="subsystems">
+        <div class="section-content">
+            <h2 class="section-title">System Components</h2>
+            
+            <!-- Ordering Interface -->
+            <div class="subsystem">
+                <div class="subsystem-header">
+                    <h3 class="subsystem-title">Customer Ordering Interface</h3>
+                    <p class="subsystem-subtitle">Mobile App & Web Platform</p>
+                    <p class="subsystem-description">
+                        Intuitive multi-platform ordering system with real-time menu updates, customization options, and seamless payment processing. Features AI-powered recommendations based on dietary preferences and order history.
+                    </p>
+                    <div class="subsystem-tech">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Stripe API</span>
+                        <span class="tech-tag">Push Notifications</span>
+                    </div>
+                </div>
+                <div class="subsystem-content">
+                    <div class="media-container">
+                        <div class="media-grid">
+                            <div class="media-item">
+                                <div class="media-placeholder">
+                                    [Mobile App Screenshots]<br>
+                                    iOS & Android Interface<br>
+                                    Order Flow Demo
+                                </div>
+                                <div class="media-caption">Mobile ordering interface with real-time customization</div>
+                            </div>
+                            <div class="media-item">
+                                <div class="media-placeholder">
+                                    [User Experience Video]<br>
+                                    Complete Order Journey<br>
+                                    1:30 duration
+                                </div>
+                                <div class="media-caption">End-to-end user experience from browse to delivery</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="subsystem-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Key Features:</div>
+                            <div class="detail-value">Personalized recommendations, dietary filters, real-time order tracking, group ordering capabilities, loyalty program integration</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Performance:</div>
+                            <div class="detail-value">Sub-2 second load times, 99.8% uptime, supports 1000+ concurrent users</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kitchen Automation -->
+            <div class="subsystem">
+                <div class="subsystem-header">
+                    <h3 class="subsystem-title">Automated Kitchen System</h3>
+                    <p class="subsystem-subtitle">Robotic Food Preparation & Assembly</p>
+                    <p class="subsystem-description">
+                        Advanced robotic kitchen equipment controlled by our custom software stack. Handles ingredient preparation, cooking, assembly, and packaging with precision timing and quality control.
+                    </p>
+                    <div class="subsystem-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ROS</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">IoT Sensors</span>
+                        <span class="tech-tag">Machine Learning</span>
+                    </div>
+                </div>
+                <div class="subsystem-content">
+                    <div class="media-container">
+                        <div class="media-grid">
+                            <div class="media-item">
+                                <div class="media-placeholder">
+                                    [Kitchen Robotics Video]<br>
+                                    Automated Prep & Assembly<br>
+                                    4:20 duration
+                                </div>
+                                <div class="media-caption">Robotic arms preparing and assembling fresh salads</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="subsystem-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Capabilities:</div>
+                            <div class="detail-value">Ingredient washing, chopping, portioning, cooking, assembly, packaging, quality inspection</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Precision:</div>
+                            <div class="detail-value">±2g ingredient accuracy, consistent portion sizes, 15-second average assembly time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory Management -->
+            <div class="subsystem">
+                <div class="subsystem-header">
+                    <h3 class="subsystem-title">Smart Inventory Management</h3>
+                    <p class="subsystem-subtitle">AI-Powered Supply Chain Optimization</p>
+                    <p class="subsystem-description">
+                        Intelligent inventory tracking system using computer vision and predictive analytics to monitor ingredient levels, predict demand, and automatically trigger reorders to minimize waste and ensure availability.
+                    </p>
+                    <div class="subsystem-tech">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Time Series DB</span>
+                        <span class="tech-tag">Supply Chain APIs</span>
+                    </div>
+                </div>
+                <div class="subsystem-content">
+                    <div class="subsystem-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Monitoring:</div>
+                            <div class="detail-value">Real-time ingredient levels, expiration tracking, quality assessment, temperature monitoring</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Optimization:</div>
+                            <div class="detail-value">Demand forecasting, automatic reordering, waste reduction algorithms, supplier integration</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Management Dashboard -->
+            <div class="subsystem">
+                <div class="subsystem-header">
+                    <h3 class="subsystem-title">Operations Dashboard</h3>
+                    <p class="subsystem-subtitle">Real-time Analytics & Control Center</p>
+                    <p class="subsystem-description">
+                        Comprehensive management interface providing real-time insights into operations, performance metrics, financial analytics, and system controls for restaurant operators and franchise managers.
+                    </p>
+                    <div class="subsystem-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">WebSocket</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">Real-time Analytics</span>
+                    </div>
+                </div>
+                <div class="subsystem-content">
+                    <div class="media-container">
+                        <div class="media-grid">
+                            <div class="media-item">
+                                <div class="media-placeholder">
+                                    [Dashboard Screenshots]<br>
+                                    Analytics Interface<br>
+                                    Real-time Metrics
+                                </div>
+                                <div class="media-caption">Live operations dashboard showing key performance indicators</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="subsystem-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Analytics:</div>
+                            <div class="detail-value">Sales performance, order patterns, ingredient usage, equipment efficiency, customer satisfaction</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Controls:</div>
+                            <div class="detail-value">Menu management, pricing adjustments, equipment control, staff scheduling, maintenance alerts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Integration -->
+            <div class="subsystem">
+                <div class="subsystem-header">
+                    <h3 class="subsystem-title">Delivery & Logistics</h3>
+                    <p class="subsystem-subtitle">Multi-Platform Delivery Integration</p>
+                    <p class="subsystem-description">
+                        Seamless integration with major delivery platforms and custom logistics optimization. Real-time tracking, route optimization, and coordination with automated kitchen timing for optimal delivery experience.
+                    </p>
+                    <div class="subsystem-tech">
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">Google Maps API</span>
+                        <span class="tech-tag">WebSocket</span>
+                        <span class="tech-tag">Route Optimization</span>
+                    </div>
+                </div>
+                <div class="subsystem-content">
+                    <div class="subsystem-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Integrations:</div>
+                            <div class="detail-value">DoorDash, UberEats, Grubhub, custom delivery fleet management, third-party logistics providers</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Optimization:</div>
+                            <div class="detail-value">Dynamic delivery time estimation, route optimization, kitchen timing coordination, customer communication</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="section-content">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Connect</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Interested in learning more about our work on Lechuga or discussing potential opportunities? We'd love to hear from you.
+                </p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3 class="contact-name">Alex Chen</h3>
+                        <div class="contact-info">
+                            <p><strong>Email:</strong> <a href="mailto:alex.chen.dev@gmail.com">alex.chen.dev@gmail.com</a></p>
+                            <p><strong>Phone:</strong> +1 (415) 555-0123</p>
+                            <p><strong>LinkedIn:</strong> <a href="#">/in/alexchen-dev</a></p>
+                            <p><strong>GitHub:</strong> <a href="#">@alexchen-code</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3 class="contact-name">Jordan Smith</h3>
+                        <div class="contact-info">
+                            <p><strong>Email:</strong> <a href="mailto:jordan.smith.ux@gmail.com">jordan.smith.ux@gmail.com</a></p>
+                            <p><strong>Phone:</strong> +1 (415) 555-0124</p>
+                            <p><strong>LinkedIn:</strong> <a href="#">/in/jordansmith-ux</a></p>
+                            <p><strong>Portfolio:</strong> <a href="#">jordandesigns.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem;">
+                    <p style="opacity: 0.8;">Want to learn more about Lechuga? <a href="mailto:info@lechuga.tech" style="color: white; font-weight: 600;">info@lechuga.tech</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Alex Chen & Jordan Smith. All rights reserved.</p>
+    </footer>
 </body>
 </html>
