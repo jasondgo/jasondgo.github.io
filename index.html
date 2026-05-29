@@ -1215,15 +1215,10 @@
             <div class="contribution-stack">
               <article class="contribution-card">
                 <div>
-                  <h4>Embedded data acquisition architecture</h4>
+                  <h4>Embedded Data Acquisition Architecture</h4>
                   <p>
-                    Structured acquisition and transmission around sensor messages containing IDs, sensor types, raw readings, timestamps, and sequence data. This helped keep sensor sampling, communication, and processing layers decoupled.
+                    Planned and developed the embedded data acquisition architecture for the rehabilitation glove. The program samples sensors on the glove at consistent, known rates and transmits the data over Bluetooth Low Energy to an external processing program. I used FreeRTOS to separate the system into decoupled tasks for scheduling, acquisition, communication, and logging, with queues used to pass data between tasks cleanly. The transmitted data includes the sensor ID, raw sensor value, timestamp, and sequence number, which makes the data easier to process, debug, and verify. Sampling performance was checked through logging of the mean sampling period and timing deviation, with measured deviations in the tens of microseconds.
                   </p>
-                  <ul class="detail-list">
-                    <li><strong>Sampling:</strong> organized readings from flex sensors, IMUs, FSRs, and other sensors.</li>
-                    <li><strong>Scheduling:</strong> planned acquisition timing and task separation.</li>
-                    <li><strong>Data shape:</strong> used consistent message structures for downstream processing.</li>
-                  </ul>
                   <div class="skill-cloud">
                     <span class="tag">Data Acquisition</span>
                     <span class="tag">FreeRTOS</span>
