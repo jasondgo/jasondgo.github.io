@@ -141,7 +141,8 @@
       .index-image img { height: 150px; }
       .work-gallery-grid { grid-template-columns: 1fr 1fr; }
       .work-photo { height: 280px; }
-      .work-photo:last-child { grid-column: 1 / -1; height: 380px; }
+      .work-photo:last-child { grid-column: 1 / -1; width: min(100%, 285px); height: auto; justify-self: center; }
+      .work-photo:last-child img { height: auto; }
       .build-gallery { grid-template-columns: 1fr 1fr; }
       .build-gallery img { height: 280px; }
       .contribution { padding: 1.5rem; }
@@ -197,7 +198,7 @@
       .glove-overview { grid-template-columns: 1fr; }
       .work-gallery { padding: .8rem; }
       .work-gallery-grid { grid-template-columns: 1fr; }
-      .work-photo, .work-photo:last-child { grid-column: auto; height: auto; }
+      .work-photo, .work-photo:last-child { grid-column: auto; width: 100%; height: auto; }
       .work-photo img { height: auto; }
       .glove-overview .image-surface { height: auto; }
       .glove-overview img { max-height: 460px; }
