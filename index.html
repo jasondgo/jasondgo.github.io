@@ -114,9 +114,9 @@
     .dashboard { display: grid; grid-template-columns: 1fr 220px; gap: 1.8rem; align-items: center; max-width: none; margin-top: 1.5rem; background: #0f1d24; padding: 1.5rem; border-radius: 5px; border: 1px solid var(--line); }
     .dashboard .image-surface { padding: .3rem; }
     .dashboard figcaption { margin-top: 0; font-size: 1rem; }
-    .hardware-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
-    .hardware-pair .image-surface { height: 330px; background: #dbe2e4; border-radius: 3px; display: flex; justify-content: center; align-items: center; }
-    .hardware-pair img { max-height: 330px; width: auto; object-fit: contain; }
+    .hardware-photo { max-width: 574px; margin: 2rem auto 0; }
+    .hardware-photo .image-surface { background: #dbe2e4; border-radius: 3px; overflow: hidden; }
+    .hardware-photo img { width: 100%; }
     .contact { padding: 3.5rem 0; background: #243c48; border-top: 1px solid #426171; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
     .contact h2 { font-size: 3.4rem; line-height: 1.05; margin-top: .6rem; }
@@ -188,7 +188,6 @@
       .glove-overview img { max-height: 460px; }
       .technical-figure .image-surface { padding: .35rem; }
       .measurement-board { padding: .6rem; }
-      .hardware-pair { grid-template-columns: 1fr; }
       .dashboard { padding: 1rem; gap: 1rem; }
       .contact-links a:first-child { font-size: 1.15rem; }
       .footer .wrap { flex-wrap: wrap; }
@@ -393,16 +392,10 @@
               <p class="tools">KiCad · PCB layout · Mixed-signal electronics · Analog conditioning</p>
             </div>
           </div>
-          <div class="hardware-pair">
-            <figure>
-              <div class="image-surface"><img src="./SolderedPCBs.jpeg" width="574" height="559" loading="lazy" alt="Fabricated circuit boards with electronic components soldered in place"></div>
-              <figcaption>Fabricated and populated circuit boards.</figcaption>
-            </figure>
-            <figure>
-              <div class="image-surface"><img src="./AnalogPCB.jpeg" width="1300" height="965" loading="lazy" alt="Three-dimensional PCB render of the analog sensor conditioning board"></div>
-              <figcaption>Analog sensor conditioning board layout.</figcaption>
-            </figure>
-          </div>
+          <figure class="hardware-photo">
+            <div class="image-surface"><img src="./SolderedPCBs.jpeg" width="574" height="559" loading="lazy" alt="Fabricated circuit boards with electronic components soldered in place"></div>
+            <figcaption>Fabricated and populated circuit boards.</figcaption>
+          </figure>
           <figure class="technical-figure">
             <div class="image-surface"><img src="./ArmMajorSchematic.JPG" width="948" height="685" loading="lazy" alt="Glove sensor PCB schematic with microcontroller, ADCs, sensor connections, and supporting circuits"></div>
             <figcaption><strong>Sensor PCB schematic.</strong> The board connects the glove’s sensors to the acquisition electronics.</figcaption>
