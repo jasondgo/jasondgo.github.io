@@ -27,7 +27,7 @@
     .masthead { border-bottom: 1px solid var(--line); }
     .nav { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
     .brand { font: 600 1.65rem/1 var(--display); letter-spacing: .02em; text-transform: uppercase; text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; font-size: 1rem; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: .7rem 1.6rem; font-size: 1rem; }
     .nav-links a { text-decoration: none; }
     .nav-links a:hover { text-decoration: underline; }
     .eyebrow { color: var(--accent); font-size: .875rem; letter-spacing: .09em; text-transform: uppercase; }
@@ -48,11 +48,11 @@
     .focus { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: start; margin-top: 3rem; padding: 1.4rem 1.7rem; border-left: 3px solid var(--accent); background: var(--panel); }
     .focus .eyebrow { padding-top: .2rem; }
     .focus p:last-child { max-width: 74ch; color: #d3dde0; }
-    .work-index { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-bottom: 4rem; }
-    .index-item { display: grid; grid-template-columns: 155px 1fr; gap: 1.4rem; align-items: center; padding: 1.2rem; border: 1px solid var(--line); border-radius: 5px; text-decoration: none; background: #15242c; transition: border-color 160ms ease; }
+    .work-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; padding-bottom: 4rem; }
+    .index-item { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 1.1rem; padding: 1.2rem; border: 1px solid var(--line); border-radius: 5px; text-decoration: none; background: #15242c; transition: border-color 160ms ease; }
     .index-item:hover { border-color: var(--accent); color: var(--ink); }
     .index-image { background: #e0e5e6; border-radius: 3px; overflow: hidden; }
-    .index-image img { width: 100%; height: 145px; object-fit: contain; }
+    .index-image img { width: 100%; height: 180px; object-fit: contain; }
     .index-item span { color: var(--accent); font-size: .875rem; }
     .index-item h2 { font-size: 2rem; line-height: 1.1; margin: .3rem 0 .5rem; }
     .index-item p { font-size: 1rem; color: var(--muted); line-height: 1.5; }
@@ -115,6 +115,15 @@
     .hardware-photo { max-width: 574px; margin: 2rem auto 0; }
     .hardware-photo .image-surface { background: #dbe2e4; border-radius: 3px; overflow: hidden; }
     .hardware-photo img { width: 100%; }
+    .work-gallery { padding: 1.2rem; margin-bottom: 1.5rem; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; }
+    .work-gallery-grid { display: grid; grid-template-columns: 1.1fr 1.1fr .85fr; gap: 1rem; }
+    .work-photo { display: flex; align-items: center; justify-content: center; height: 350px; background: #dbe2e4; border-radius: 3px; overflow: hidden; }
+    .work-photo img { width: 100%; height: 100%; object-fit: contain; }
+    .work-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.3rem; }
+    .work-detail { margin-top: 0; }
+    .work-detail .contribution-heading { display: block; }
+    .work-detail h3 { font-size: 1.9rem; line-height: 1.12; margin-bottom: 1.1rem; }
+    .work-detail:last-child { border-top: 3px solid var(--accent); }
     .contact { padding: 3.5rem 0; background: #243c48; border-top: 1px solid #426171; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
     .contact h2 { font-size: 3.4rem; line-height: 1.05; margin-top: .6rem; }
@@ -128,8 +137,11 @@
     @media (max-width: 1000px) {
       .hero-grid { gap: 2rem; }
       .portrait img { height: 470px; }
-      .index-item { grid-template-columns: 115px 1fr; gap: 1rem; }
-      .index-image img { height: 140px; }
+      .index-item { padding: 1rem; }
+      .index-image img { height: 150px; }
+      .work-gallery-grid { grid-template-columns: 1fr 1fr; }
+      .work-photo { height: 280px; }
+      .work-photo:last-child { grid-column: 1 / -1; height: 380px; }
       .build-gallery { grid-template-columns: 1fr 1fr; }
       .build-gallery img { height: 280px; }
       .contribution { padding: 1.5rem; }
@@ -151,7 +163,8 @@
       .portrait img { height: auto; object-fit: contain; }
       .focus { grid-template-columns: 1fr; gap: .6rem; margin-top: 2rem; }
       .work-index { grid-template-columns: 1fr; }
-      .index-item { grid-template-columns: 140px 1fr; }
+      .index-item { grid-template-columns: 140px 1fr; grid-template-rows: auto; align-items: center; }
+      .work-details { grid-template-columns: 1fr; }
       .control-pair { grid-template-columns: 1fr; gap: 0; }
       .project-header, .contribution-heading, .contribution-kiosk { grid-template-columns: 1fr; gap: 1.2rem; }
       .contribution-kiosk figure { max-width: 300px; margin-inline: auto; }
@@ -182,6 +195,10 @@
       .build-gallery figcaption { font-size: .875rem; }
       .contribution { padding: 1.2rem; }
       .glove-overview { grid-template-columns: 1fr; }
+      .work-gallery { padding: .8rem; }
+      .work-gallery-grid { grid-template-columns: 1fr; }
+      .work-photo, .work-photo:last-child { grid-column: auto; height: auto; }
+      .work-photo img { height: auto; }
       .glove-overview .image-surface { height: auto; }
       .glove-overview img { max-height: 460px; }
       .technical-figure .image-surface { padding: .35rem; }
@@ -201,6 +218,7 @@
       <div class="nav-links">
         <a href="#lechuga">Lechuga</a>
         <a href="#rehab-glove">Rehab glove</a>
+        <a href="#professional-work">Work</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -227,7 +245,7 @@
         <p>I’m looking to pursue higher education and grow in my current role by taking on greater responsibilities, with a focus on machine vision and robot programming.</p>
       </div>
     </section>
-    <div class="wrap work-index" id="selected-work" aria-label="Selected engineering projects">
+    <div class="wrap work-index" id="selected-work" aria-label="Selected projects and professional work">
       <a class="index-item" href="#lechuga">
         <div class="index-image"><img src="./MostRecentSystemImage.jpeg" width="1017" height="594" alt="" loading="lazy"></div>
         <div><span>Machine automation</span>
@@ -239,6 +257,12 @@
         <div><span>Wearable instrumentation · Capstone</span>
         <h2>Rehabilitation glove</h2>
         <p>Sensor characterization, acquisition electronics, and motion estimation.</p></div>
+      </a>
+      <a class="index-item" href="#professional-work">
+        <div class="index-image"><img src="./images/work/field-equipment.jpg" width="1600" height="1200" alt="" loading="lazy"></div>
+        <div><span>Professional work</span>
+        <h2>Industrial automation</h2>
+        <p>PLC and HMI programming, field commissioning, and machine vision.</p></div>
       </a>
     </div>
     <section class="project" id="lechuga" aria-labelledby="lechuga-title">
@@ -412,6 +436,58 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+    <section class="project" id="professional-work" aria-labelledby="work-title">
+      <div class="wrap">
+        <header class="project-header">
+          <div>
+            <p class="eyebrow">Professional work · Industrial automation</p>
+            <h2 class="project-title" id="work-title">Controls, commissioning<br>&amp; machine vision</h2>
+          </div>
+          <div class="project-summary">
+            <p>My work as an automation engineer combines PLC and HMI programming with hands-on installation, commissioning, and troubleshooting on site.</p>
+            <div class="scope"><strong>My focus</strong><br>Industrial controls, equipment installation, camera commissioning, and tools for engineering workflows.</div>
+          </div>
+        </header>
+        <figure class="work-gallery">
+          <div class="work-gallery-grid">
+            <div class="work-photo"><img src="./images/work/field-equipment.jpg" width="1600" height="1200" loading="lazy" alt="Industrial equipment and conveyors within an aluminum extrusion frame"></div>
+            <div class="work-photo"><img src="./images/work/robot-cell.jpg" width="1600" height="1270" loading="lazy" alt="Industrial robot cell with yellow robot arms, fixtures, and controllers"></div>
+            <div class="work-photo"><img src="./images/work/control-enclosure.jpg" width="1200" height="1600" loading="lazy" alt="Open industrial control enclosure with PLC modules, terminal blocks, and field wiring"></div>
+          </div>
+          <figcaption>A selection of photographs from jobs I’ve worked on.</figcaption>
+        </figure>
+        <div class="work-details">
+          <article class="contribution work-detail">
+            <h3>PLC &amp; HMI programming</h3>
+            <div class="prose">
+              <p>I program and troubleshoot Allen-Bradley PLCs in Studio 5000 Logix Designer and develop HMI applications in FactoryTalk View and AVEVA/Wonderware. My work connects controller logic with the operator interface and includes diagnosing issues across the control system.</p>
+              <p class="tools">Allen-Bradley · Studio 5000 · FactoryTalk View · AVEVA/Wonderware</p>
+            </div>
+          </article>
+          <article class="contribution work-detail">
+            <h3>Installation &amp; commissioning</h3>
+            <div class="prose">
+              <p>I support on-site installation and startup, including mechanical installation, wiring, and checking that devices and machine functions operate as intended. Troubleshooting spans the physical installation, electrical connections, and control software.</p>
+              <p class="tools">Mechanical installation · Field wiring · Commissioning · Troubleshooting</p>
+            </div>
+          </article>
+          <article class="contribution work-detail">
+            <h3>Machine vision</h3>
+            <div class="prose">
+              <p>I commission and troubleshoot industrial cameras, working on alignment and lighting to obtain usable inspection images. I’ve also contributed to a Keyence line-scan project for defect detection using XG-X VisionEditor.</p>
+              <p class="tools">Camera alignment · Lighting · Line-scan inspection · Keyence XG-X VisionEditor</p>
+            </div>
+          </article>
+          <article class="contribution work-detail">
+            <h3>Agent-assisted PLC programming</h3>
+            <div class="prose">
+              <p>I’m developing a Model Context Protocol (MCP) server that gives AI agents tools to assist with PLC programming in Studio 5000 Logix Designer. The goal is to bring agent-assisted workflows into the established development environment used for existing Allen-Bradley projects.</p>
+              <p class="tools">MCP server development · AI agents · Studio 5000 integration</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
     <section class="contact" id="contact" aria-labelledby="contact-title">
