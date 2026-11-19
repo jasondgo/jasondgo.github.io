@@ -4,122 +4,194 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Jason Gomez is an automation engineer and Texas A&M mechatronics graduate. Selected work in embedded control, sensor characterization, electronics, and systems integration.">
-  <meta name="theme-color" content="#6b242c">
+  <meta name="theme-color" content="#101b21">
   <title>Jason Gomez | Engineering Portfolio</title>
   <style>
-    :root { --ink: #232729; --muted: #555e62; --accent: #6b242c; --line: #d3d8da; --paper: #fff; --wash: #f2f4f4; --serif: Georgia, 'Times New Roman', serif; --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+    @font-face { font-family: Barlow; src: url('./fonts/Barlow-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Barlow Condensed'; src: url('./fonts/BarlowCondensed-SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+    :root { --ink: #f1f3ee; --muted: #b1c0c6; --accent: #e8ae77; --line: #35454e; --paper: #101b21; --wash: #e8edee; --panel: #192a33; --display: 'Barlow Condensed', 'Arial Narrow', sans-serif; --sans: Barlow, 'Segoe UI', sans-serif; }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.7; }
-    a { color: inherit; text-underline-offset: .24em; text-decoration-thickness: 1px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1.0625rem/1.65 var(--sans); }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .25em; }
     a:hover { color: var(--accent); }
-    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
     img { display: block; max-width: 100%; height: auto; }
-    figure { margin: 0; min-width: 0; }
-    h1, h2, h3, h4, p { margin: 0; }
-    h1, h2, h3, h4 { font-weight: 400; }
-    .wrap { width: min(1120px, calc(100% - 5rem)); margin-inline: auto; }
-    .skip-link { position: absolute; top: -6rem; left: 1rem; z-index: 10; padding: .75rem; background: white; }
+    figure { min-width: 0; margin: 0; }
+    h1,h2,h3,h4,p { margin: 0; }
+    h1,h2,h3,h4 { font-family: var(--display); font-weight: 600; }
+    .wrap { width: min(1160px, calc(100% - 5rem)); margin-inline: auto; }
+    .skip-link { position: absolute; top: -6rem; left: 1rem; z-index: 5; padding: .75rem; background: var(--paper); }
     .skip-link:focus { top: 1rem; }
     .masthead { border-bottom: 1px solid var(--line); }
-    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-    .brand { font-weight: 650; text-decoration: none; letter-spacing: -.025em; font-size: 1.15rem; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 1.8rem; font-size: .9375rem; }
+    .nav { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .brand { font: 600 1.65rem/1 var(--display); letter-spacing: .02em; text-transform: uppercase; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; font-size: 1rem; }
     .nav-links a { text-decoration: none; }
     .nav-links a:hover { text-decoration: underline; }
-    .eyebrow { color: var(--accent); font-size: .875rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
-    .hero { padding: 5.5rem 0 4.5rem; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 6rem; align-items: start; }
-    h1 { font-family: var(--serif); font-size: clamp(3.8rem, 8vw, 6.6rem); line-height: 1.02; letter-spacing: -.065em; margin: 1rem 0 1.6rem; }
-    .hero-lead { font-size: clamp(1.15rem, 2.1vw, 1.4rem); line-height: 1.6; max-width: 660px; }
-    .hero-note { color: var(--muted); max-width: 640px; margin-top: 1rem; }
-    .hero-links { display: flex; gap: 1.8rem; flex-wrap: wrap; margin-top: 1.8rem; font-weight: 600; }
-    .portrait { padding-top: .4rem; }
-    .portrait img { width: 250px; }
-    figcaption { color: var(--muted); font-size: .875rem; line-height: 1.6; margin-top: .8rem; }
-    .portrait figcaption { border-top: 1px solid var(--line); padding-top: .8rem; }
-    .focus { margin-top: 3.5rem; border-block: 1px solid var(--line); display: grid; grid-template-columns: 220px 1fr; gap: 2rem; padding: 1.6rem 0; }
-    .focus p:last-child { max-width: 720px; }
-    .work-index { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-bottom: 4.5rem; }
-    .index-item { display: block; text-decoration: none; border-top: 2px solid var(--ink); padding-top: 1rem; }
-    .index-item span { font-size: .875rem; color: var(--muted); }
-    .index-item h2 { font-family: var(--serif); font-size: 1.9rem; line-height: 1.25; margin: .4rem 0 .6rem; }
-    .index-item p { color: var(--muted); }
-    .project { padding: 4.5rem 0 5.5rem; border-top: 1px solid var(--line); }
-    .project.alt { background: var(--wash); }
-    .project-header { display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; margin-bottom: 2.8rem; }
-    .project-title { font-family: var(--serif); font-size: clamp(2.5rem, 4.8vw, 3.7rem); line-height: 1.12; letter-spacing: -.035em; margin-top: .8rem; }
-    .project-summary { padding-top: .2rem; }
-    .project-summary > p { font-size: 1.125rem; }
-    .scope { border-top: 1px solid var(--line); margin-top: 1.4rem; padding-top: .9rem; font-size: .9375rem; color: var(--muted); }
-    .scope strong { color: var(--ink); font-weight: 600; }
-    .feature-image { background: var(--wash); }
-    .feature-image img { width: 100%; }
-    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: start; }
-    .gallery .image-surface { background: var(--wash); display: flex; justify-content: center; align-items: center; }
-    .gallery img { width: auto; max-height: 480px; object-fit: contain; }
-    .alt .image-surface { background: #fff; }
-    .section-label { padding-top: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
-    .section-label h3 { font-family: var(--serif); font-size: 2rem; letter-spacing: -.025em; }
-    .contribution { padding: 2.4rem 0; border-bottom: 1px solid var(--line); }
-    .contribution:last-child { border-bottom: 0; padding-bottom: 0; }
-    .contribution-heading { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; }
-    .contribution h4 { font-family: var(--serif); font-size: 1.6rem; line-height: 1.3; }
+    .eyebrow { color: var(--accent); font-size: .875rem; letter-spacing: .09em; text-transform: uppercase; }
+    .hero { padding: 4rem 0 3rem; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 4.5rem; align-items: center; }
+    h1 { font-size: clamp(5rem, 10vw, 8.6rem); line-height: .88; letter-spacing: -.025em; margin: 1.2rem 0 1.7rem; }
+    h1 span { display: block; }
+    .hero-lead { font-size: clamp(1.25rem, 2vw, 1.55rem); line-height: 1.45; max-width: 33ch; }
+    .hero-note { color: var(--muted); margin-top: 1.2rem; max-width: 52ch; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.8rem; }
+    .hero-links a { display: inline-flex; padding: .7rem 1.2rem; border: 1px solid #71838b; border-radius: 3px; text-decoration: none; font-size: 1rem; }
+    .hero-links a:first-child { background: var(--accent); color: #172026; border-color: var(--accent); }
+    .hero-links a:hover { background: #f4c091; color: #172026; border-color: #f4c091; }
+    .portrait { position: relative; padding: 1rem 0 0 1rem; }
+    .portrait::before { content: ''; position: absolute; inset: 0 1rem 3.3rem 0; border: 1px solid #60717a; pointer-events: none; }
+    .portrait img { position: relative; width: 100%; height: 500px; object-fit: cover; object-position: 50% 45%; border-radius: 3px; }
+    figcaption { font-size: .9375rem; line-height: 1.5; color: var(--muted); margin-top: .8rem; }
+    .portrait figcaption { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: .3rem; }
+    .portrait figcaption span:last-child { color: var(--accent); }
+    .focus { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: start; margin-top: 3rem; padding: 1.4rem 1.7rem; border-left: 3px solid var(--accent); background: var(--panel); }
+    .focus .eyebrow { padding-top: .2rem; }
+    .focus p:last-child { max-width: 74ch; color: #d3dde0; }
+    .work-index { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-bottom: 4rem; }
+    .index-item { display: grid; grid-template-columns: 155px 1fr; gap: 1.4rem; align-items: center; padding: 1.2rem; border: 1px solid var(--line); border-radius: 5px; text-decoration: none; background: #15242c; transition: border-color 160ms ease; }
+    .index-item:hover { border-color: var(--accent); color: var(--ink); }
+    .index-image { background: #e0e5e6; border-radius: 3px; overflow: hidden; }
+    .index-image img { width: 100%; height: 145px; object-fit: contain; }
+    .index-item span { color: var(--accent); font-size: .875rem; }
+    .index-item h2 { font-size: 2rem; line-height: 1.1; margin: .3rem 0 .5rem; }
+    .index-item p { font-size: 1rem; color: var(--muted); line-height: 1.5; }
+    .project { padding: 4rem 0; border-top: 1px solid var(--line); }
+    .project.alt { background: #15232b; }
+    .project-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 2rem; }
+    .project-title { font-size: clamp(2.8rem, 5vw, 4.2rem); line-height: 1.02; letter-spacing: -.015em; margin-top: .7rem; }
+    .project-summary > p { font-size: 1.1875rem; line-height: 1.55; max-width: 48ch; }
+    .scope { margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 1rem; }
+    .scope strong { color: var(--accent); font-weight: 400; }
+    .feature-image { display: flex; justify-content: center; background: #d5dcde; border-radius: 5px; overflow: hidden; }
+    .feature-image img { max-height: 590px; width: auto; object-fit: contain; }
+    .build-gallery { display: grid; grid-template-columns: 1.15fr 1.15fr .9fr .9fr; gap: 1rem; margin-top: 1.5rem; padding: 1.2rem; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; align-items: start; }
+    .build-gallery .image-surface { display: flex; justify-content: center; align-items: center; background: #d5dcde; border-radius: 3px; overflow: hidden; }
+    .build-gallery img { width: 100%; height: 220px; object-fit: contain; }
+    .build-gallery figcaption { font-size: .875rem; }
+    .section-label { margin: 2.8rem 0 1.3rem; display: flex; align-items: center; gap: 1.5rem; }
+    .section-label::after { content: ''; height: 1px; flex: 1; background: var(--line); }
+    .section-label h3 { font-size: 2rem; }
+    .contribution { margin-top: 1.3rem; padding: 2rem; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+    .contribution-heading { display: grid; grid-template-columns: 230px 1fr; gap: 2.2rem; }
+    .contribution h4 { font-size: 1.9rem; line-height: 1.12; color: #f4f4ed; }
+    .prose { min-width: 0; }
+    .prose p { max-width: 60ch; }
     .prose p + p { margin-top: 1rem; }
-    .tools { color: var(--accent); font-size: .875rem; margin-top: 1rem; }
-    .technical-figure { margin: 2.5rem auto 0; max-width: 960px; }
+    .tools { color: var(--accent); font-size: .9375rem; }
+    .contribution-kiosk { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; align-items: center; }
+    .contribution-kiosk .contribution-heading { display: block; }
+    .contribution-kiosk h4 { margin-bottom: 1.2rem; }
+    .contribution-kiosk figure { padding: 1rem; background: #0f1d24; border-radius: 4px; }
+    .contribution-kiosk img { width: 100%; border-radius: 2px; }
+    .control-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+    .control-pair .contribution { border-top: 3px solid #78929f; }
+    .control-pair .contribution-heading { display: block; }
+    .control-pair h4 { margin-bottom: 1.2rem; max-width: 18ch; }
+    .technical-figure { margin: 2rem auto 0; max-width: 1000px; }
+    .technical-figure .image-surface { background: #fff; border-radius: 3px; padding: 1.2rem; }
     .technical-figure img { width: auto; margin-inline: auto; }
-    .technical-figure .image-surface { padding: 1.5rem; background: white; border: 1px solid var(--line); }
-    .technical-figure figcaption { max-width: 800px; margin-inline: auto; }
-    .technical-figure figcaption strong { color: var(--ink); font-weight: 600; }
-    .kiosk-layout { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; margin-top: 2rem; align-items: center; }
-    .kiosk-layout .prose { max-width: 570px; }
-    .kiosk-layout img { width: 100%; }
-    .glove-overview { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; align-items: center; }
-    .glove-overview img { max-height: 540px; width: auto; margin-inline: auto; }
-    .glove-overview .image-surface { background: white; padding: 1.5rem; }
-    .glove-overview figure:last-child img { max-height: 440px; }
-    .hardware-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: start; }
-    .hardware-pair img { max-height: 420px; margin-inline: auto; object-fit: contain; }
-    .contact { padding: 4rem 0; }
-    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; }
-    .contact h2 { font-family: var(--serif); font-size: 2.6rem; line-height: 1.15; margin-top: .6rem; }
-    .contact-links { display: grid; gap: .9rem; align-content: center; }
-    .contact-links a { width: fit-content; overflow-wrap: anywhere; }
-    .footer { border-top: 1px solid var(--line); padding: 1.3rem 0; color: var(--muted); font-size: .875rem; }
+    .technical-figure figcaption { max-width: 80ch; }
+    .technical-figure figcaption strong { font-weight: 400; color: var(--accent); }
+    .contribution-acquisition { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+    .contribution-acquisition .contribution-heading { display: block; }
+    .contribution-acquisition h4 { margin-bottom: 1.2rem; }
+    .contribution-acquisition .technical-figure { margin: 0; }
+    .contribution-acquisition .image-surface { padding: .8rem; }
+    .measurement-board { background: #fff; padding: 1.5rem; border-radius: 4px; margin-top: 2rem; }
+    .measurement-board .technical-figure { max-width: 850px; margin: 0 auto; padding: 1.3rem 0; }
+    .measurement-board .technical-figure + .technical-figure { border-top: 1px solid #cbd4d8; }
+    .measurement-board .image-surface { padding: 0; }
+    .measurement-board figcaption { color: #4b5961; }
+    .measurement-board figcaption strong { color: #283e49; }
+    .glove-overview { display: grid; grid-template-columns: .8fr 1.2fr; gap: 1.5rem; align-items: stretch; }
+    .glove-overview .image-surface { display: flex; justify-content: center; align-items: center; height: 450px; background: #fff; border-radius: 5px; overflow: hidden; }
+    .glove-overview img { max-height: 450px; width: auto; object-fit: contain; }
+    .glove-overview figure:first-child .image-surface { background: #c6d1d6; }
+    .glove-overview figure:last-child .image-surface { padding: 1.5rem; }
+    .dashboard { display: grid; grid-template-columns: 1fr 220px; gap: 1.8rem; align-items: center; max-width: none; margin-top: 1.5rem; background: #0f1d24; padding: 1.5rem; border-radius: 5px; border: 1px solid var(--line); }
+    .dashboard .image-surface { padding: .3rem; }
+    .dashboard figcaption { margin-top: 0; font-size: 1rem; }
+    .hardware-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .hardware-pair .image-surface { height: 330px; background: #dbe2e4; border-radius: 3px; display: flex; justify-content: center; align-items: center; }
+    .hardware-pair img { max-height: 330px; width: auto; object-fit: contain; }
+    .contact { padding: 3.5rem 0; background: #243c48; border-top: 1px solid #426171; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .contact h2 { font-size: 3.4rem; line-height: 1.05; margin-top: .6rem; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: .8rem 2rem; }
+    .contact-links a { overflow-wrap: anywhere; }
+    .contact-links a:first-child { width: 100%; font-size: 1.3rem; }
+    .footer { padding: 1.4rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9375rem; }
     .footer .wrap { display: flex; justify-content: space-between; gap: 1rem; }
-    @media (max-width: 900px) {
-      .hero-grid { gap: 2.5rem; grid-template-columns: 1fr 200px; }
+    @media (max-width: 1000px) {
+      .hero-grid { gap: 2rem; }
+      .portrait img { height: 470px; }
+      .index-item { grid-template-columns: 115px 1fr; gap: 1rem; }
+      .index-image img { height: 140px; }
+      .build-gallery { grid-template-columns: 1fr 1fr; }
+      .build-gallery img { height: 280px; }
+      .contribution { padding: 1.5rem; }
+      .contribution-heading { grid-template-columns: 180px 1fr; gap: 1.5rem; }
+      .contribution-kiosk { grid-template-columns: 1fr 230px; gap: 1.8rem; }
+      .contribution-acquisition { grid-template-columns: 1fr; }
+      .contribution-acquisition .technical-figure { width: 100%; }
       .project-header { gap: 2rem; }
-      .contribution-heading { grid-template-columns: 220px 1fr; gap: 2rem; }
-      .focus { grid-template-columns: 180px 1fr; }
+      .dashboard { grid-template-columns: 1fr; }
     }
-    @media (max-width: 640px) {
-      html { scroll-padding-top: 1rem; }
+    @media (max-width: 760px) {
       .wrap { width: calc(100% - 2.5rem); }
-      .nav { padding-block: 1rem; align-items: flex-start; flex-direction: column; gap: .6rem; }
-      .nav-links { gap: 1.3rem; }
-      .hero { padding: 3rem 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .portrait { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; align-items: end; }
-      .portrait img { width: 140px; }
-      .portrait figcaption { margin: 0; }
-      .focus { grid-template-columns: 1fr; gap: .6rem; margin-top: 2.5rem; }
-      .work-index { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
-      .project { padding: 3rem 0; }
-      .project-header, .contribution-heading, .glove-overview, .kiosk-layout, .contact-inner { grid-template-columns: 1fr; gap: 1.3rem; }
-      .gallery, .hardware-pair { grid-template-columns: 1fr; gap: 1.5rem; }
-      .gallery img { max-height: none; }
-      .section-label { padding-top: 2.8rem; }
-      .contribution { padding: 1.8rem 0; }
-      .technical-figure { margin-top: 1.8rem; }
-      .technical-figure .image-surface { padding: .5rem; }
-      .kiosk-layout figure { max-width: 300px; margin-inline: auto; }
-      .glove-overview .image-surface { padding: 1rem; }
-      .contact { padding: 3rem 0; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 2.5rem; }
+      h1 { font-size: clamp(5.8rem, 16vw, 8rem); }
+      h1 span { display: inline; }
+      h1 span + span::before { content: ' '; }
+      .portrait { max-width: 500px; width: 100%; margin-inline: auto; }
+      .portrait img { height: auto; object-fit: contain; }
+      .focus { grid-template-columns: 1fr; gap: .6rem; margin-top: 2rem; }
+      .work-index { grid-template-columns: 1fr; }
+      .index-item { grid-template-columns: 140px 1fr; }
+      .control-pair { grid-template-columns: 1fr; gap: 0; }
+      .project-header, .contribution-heading, .contribution-kiosk { grid-template-columns: 1fr; gap: 1.2rem; }
+      .contribution-kiosk figure { max-width: 300px; margin-inline: auto; }
+      .glove-overview .image-surface { height: 330px; }
+      .glove-overview img { max-height: 330px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .contribution h4 { max-width: none; }
+    }
+    @media (max-width: 480px) {
+      .nav { align-items: flex-start; flex-direction: column; gap: .8rem; padding-block: 1.2rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero-grid { gap: 2rem; }
+      h1 { font-size: clamp(3.5rem, 18.5vw, 4.5rem); }
+      h1 span { display: inline; }
+      h1 span + span::before { content: ' '; }
+      .hero-links { gap: .65rem; }
+      .hero-links a { padding: .65rem .85rem; }
+      .hero-note { font-size: 1rem; }
+      .focus { padding: 1.2rem; }
+      .index-item { grid-template-columns: 100px 1fr; padding: 1rem; }
+      .index-image img { height: 150px; }
+      .index-item h2 { font-size: 1.8rem; }
+      .index-item span { font-size: .875rem; }
+      .project { padding-block: 3rem; }
+      .project-title { font-size: 3rem; }
+      .build-gallery { padding: .8rem; gap: .8rem; }
+      .build-gallery img { height: 180px; }
+      .build-gallery figcaption { font-size: .875rem; }
+      .contribution { padding: 1.2rem; }
+      .glove-overview { grid-template-columns: 1fr; }
+      .glove-overview .image-surface { height: auto; }
+      .glove-overview img { max-height: 460px; }
+      .technical-figure .image-surface { padding: .35rem; }
+      .measurement-board { padding: .6rem; }
+      .hardware-pair { grid-template-columns: 1fr; }
+      .dashboard { padding: 1rem; gap: 1rem; }
+      .contact-links a:first-child { font-size: 1.15rem; }
       .footer .wrap { flex-wrap: wrap; }
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .index-item { transition: none; } }
   </style>
 </head>
 <body>
@@ -139,7 +211,7 @@
       <div class="hero-grid">
         <div>
           <p class="eyebrow">Automation engineer · Texas A&amp;M graduate</p>
-          <h1 id="page-title">Jason Gomez</h1>
+          <h1 id="page-title"><span>Jason</span> <span>Gomez</span></h1>
           <p class="hero-lead">I build the connections between electronics, embedded software, and the physical systems they control.</p>
           <p class="hero-note">I’m an automation engineer and a Texas A&amp;M mechatronics graduate. My project work spans machine coordination, wearable sensing, and the measurements that make those systems useful.</p>
           <div class="hero-links">
@@ -149,7 +221,7 @@
         </div>
         <figure class="portrait">
           <img src="./jasonImage.jpg" width="2540" height="2244" alt="Jason Gomez standing beside machining equipment">
-          <figcaption>Mechatronics background.<br>Automation in practice.</figcaption>
+          <figcaption><span>Texas A&amp;M University</span><span>Mechatronics</span></figcaption>
         </figure>
       </div>
       <div class="focus">
@@ -159,14 +231,16 @@
     </section>
     <div class="wrap work-index" id="selected-work" aria-label="Selected engineering projects">
       <a class="index-item" href="#lechuga">
-        <span>Machine automation</span>
+        <div class="index-image"><img src="./MostRecentSystemImage.jpeg" width="1017" height="594" alt="" loading="lazy"></div>
+        <div><span>Machine automation</span>
         <h2>Lechuga</h2>
-        <p>From a customer order to coordinated motion across an automated food service prototype.</p>
+        <p>Order coordination, embedded motion control, and machine integration.</p></div>
       </a>
       <a class="index-item" href="#rehab-glove">
-        <span>Wearable instrumentation · Capstone</span>
+        <div class="index-image"><img src="./GloveRender.JPG" width="580" height="510" alt="" loading="lazy"></div>
+        <div><span>Wearable instrumentation · Capstone</span>
         <h2>Rehabilitation glove</h2>
-        <p>From raw sensor readings to measurements of hand motion and grip force.</p>
+        <p>Sensor characterization, acquisition electronics, and motion estimation.</p></div>
       </a>
     </div>
     <section class="project" id="lechuga" aria-labelledby="lechuga-title">
@@ -185,7 +259,7 @@
           <div class="feature-image"><img src="./MostRecentSystemImage.jpeg" width="1017" height="594" loading="lazy" alt="Assembled Lechuga prototype with ingredient hoppers, conveyor, and bowl delivery mechanism"></div>
           <figcaption>The assembled food service prototype, bringing dispensing, bowl movement, and delivery into one system.</figcaption>
         </figure>
-        <div class="gallery">
+        <div class="build-gallery">
           <figure>
             <div class="image-surface"><img src="./renderSystem1.jpeg" width="1366" height="1110" loading="lazy" alt="CAD rendering of the complete Lechuga machine layout"></div>
             <figcaption>Planned mechanical layout in CAD.</figcaption>
@@ -194,8 +268,7 @@
             <div class="image-surface"><img src="./UpcomingPrototype.JPG" width="1055" height="692" loading="lazy" alt="Lechuga prototype on a workshop bench during assembly"></div>
             <figcaption>Build progress with Jeremiah.</figcaption>
           </figure>
-        </div>
-        <div class="gallery">
+
           <figure>
             <div class="image-surface"><img src="./SystemBeingBuilt1.jpeg" width="1200" height="1376" loading="lazy" alt="Top view of the Lechuga conveyor and bowl handling hardware during assembly"></div>
             <figcaption>Top view of the machine during assembly.</figcaption>
@@ -206,7 +279,7 @@
           </figure>
         </div>
         <div class="section-label"><h3>My contributions</h3></div>
-        <article class="contribution">
+        <article class="contribution contribution-kiosk">
           <div class="contribution-heading">
             <h4>Customer ordering interface</h4>
             <div class="prose">
@@ -215,15 +288,13 @@
               <p class="tools">TypeScript · Node.js · Electron · Stripe API</p>
             </div>
           </div>
-          <div class="kiosk-layout">
-            <div class="prose"><p>The interface is part of the machine’s control flow: an accepted order must reach the automation controller, and machine availability must be reflected back to the customer.</p></div>
-            <figure>
+<figure>
               <img src="./ItemPageImage.JPG" width="476" height="829" loading="lazy" alt="Complete kiosk item selection screen with ingredient choices, bowl preview, and price">
               <figcaption>The complete item-selection screen.</figcaption>
             </figure>
-          </div>
         </article>
-        <article class="contribution">
+        <div class="control-pair">
+<article class="contribution">
           <div class="contribution-heading">
             <h4>Order and automation controller</h4>
             <div class="prose">
@@ -233,7 +304,7 @@
             </div>
           </div>
         </article>
-        <article class="contribution">
+<article class="contribution">
           <div class="contribution-heading">
             <h4>Embedded motion control</h4>
             <div class="prose">
@@ -243,6 +314,7 @@
             </div>
           </div>
         </article>
+</div>
       </div>
     </section>
     <section class="project alt" id="rehab-glove" aria-labelledby="glove-title">
@@ -267,12 +339,12 @@
             <figcaption>Component layout for the glove and grip-strength device.</figcaption>
           </figure>
         </div>
-        <figure class="technical-figure">
+        <figure class="technical-figure dashboard">
           <div class="image-surface"><img src="./CapstoneUI.png" width="1586" height="901" loading="lazy" alt="Rehabilitation dashboard showing sensor measurements and exercise information"></div>
           <figcaption>The therapist and patient interface presents measurements collected by the system.</figcaption>
         </figure>
         <div class="section-label"><h3>My contributions</h3></div>
-        <article class="contribution">
+        <article class="contribution contribution-acquisition">
           <div class="contribution-heading">
             <h4>Embedded data acquisition</h4>
             <div class="prose">
@@ -295,7 +367,8 @@
               <p class="tools">IMUs · ADC · Hysteresis and drift · Noise characterization</p>
             </div>
           </div>
-          <figure class="technical-figure">
+          <div class="measurement-board">
+<figure class="technical-figure">
             <div class="image-surface"><img src="./ForceSensorExample.JPG" width="828" height="490" loading="lazy" alt="Force sensor characterization plot comparing loading and unloading measurements against applied force"></div>
             <figcaption><strong>Force sensor characterization.</strong> Loading and unloading measurements reveal the sensor response and hysteresis used to inform calibration.</figcaption>
           </figure>
@@ -307,6 +380,7 @@
             <div class="image-surface"><img src="./orthogonalityCorrection.JPG" width="565" height="376" loading="lazy" alt="Accelerometer calibration output showing axis misalignment and scale-factor correction matrices"></div>
             <figcaption><strong>Accelerometer calibration.</strong> Axis orthogonality and scale-factor correction support more consistent motion measurements.</figcaption>
           </figure>
+</div>
         </article>
         <article class="contribution">
           <div class="contribution-heading">
@@ -319,11 +393,11 @@
           </div>
           <div class="hardware-pair">
             <figure>
-              <img src="./SolderedPCBs.jpeg" width="574" height="559" loading="lazy" alt="Fabricated circuit boards with electronic components soldered in place">
+              <div class="image-surface"><img src="./SolderedPCBs.jpeg" width="574" height="559" loading="lazy" alt="Fabricated circuit boards with electronic components soldered in place"></div>
               <figcaption>Fabricated and populated circuit boards.</figcaption>
             </figure>
             <figure>
-              <img src="./AnalogPCB.jpeg" width="1300" height="965" loading="lazy" alt="Three-dimensional PCB render of the analog sensor conditioning board">
+              <div class="image-surface"><img src="./AnalogPCB.jpeg" width="1300" height="965" loading="lazy" alt="Three-dimensional PCB render of the analog sensor conditioning board"></div>
               <figcaption>Analog sensor conditioning board layout.</figcaption>
             </figure>
           </div>
