@@ -1,1497 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jason Gomez engineering portfolio: automation, embedded systems, controls, and systems integration projects." />
-  <title>Jason Gomez | Automation & Embedded Systems Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jason Gomez is an automation engineer and Texas A&M mechatronics graduate. Selected work in embedded control, sensor characterization, electronics, and systems integration.">
+  <meta name="theme-color" content="#6b242c">
+  <title>Jason Gomez | Engineering Portfolio</title>
   <style>
-    :root {
-      --bg: #0c1117;
-      --bg-soft: #111923;
-      --card: #151f2b;
-      --card-2: #192636;
-      --text: #edf4f8;
-      --muted: #a7b7c5;
-      --line: rgba(255, 255, 255, 0.11);
-      --accent: #77d6a5;
-      --accent-2: #7db8ff;
-      --accent-soft: rgba(119, 214, 165, 0.14);
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
-      --radius: 24px;
-      --radius-sm: 16px;
-      --max-width: 1180px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--sans);
-      background:
-        radial-gradient(circle at 20% 8%, rgba(119, 214, 165, 0.12), transparent 28rem),
-        radial-gradient(circle at 85% 12%, rgba(125, 184, 255, 0.14), transparent 30rem),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    img, video { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-
-    .page-shell {
-      width: min(var(--max-width), calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(18px);
-      background: rgba(12, 17, 23, 0.78);
-    }
-
-    .nav-inner {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 780;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #071017;
-      font-weight: 850;
-      box-shadow: 0 10px 28px rgba(119, 214, 165, 0.20);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.15rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .nav-links a {
-      padding: 0.55rem 0.2rem;
-      transition: color 180ms ease;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      padding: 0.68rem 1rem !important;
-      border: 1px solid rgba(119, 214, 165, 0.35);
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--text);
-    }
-
-    .mobile-menu-button {
-      display: none;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--card);
-      color: var(--text);
-      padding: 0.6rem 0.75rem;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .hero { padding: 6.4rem 0 4.5rem; }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
-      align-items: center;
-      gap: 3rem;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid rgba(119, 214, 165, 0.22);
-      border-radius: 999px;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.6rem, 6vw, 5.35rem);
-      line-height: 0.98;
-      letter-spacing: -0.065em;
-      max-width: 820px;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-lead {
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.24rem);
-      max-width: 720px;
-      margin-bottom: 1.8rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-bottom: 2rem;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      min-height: 46px;
-      padding: 0.75rem 1.15rem;
-      border-radius: 999px;
-      font-weight: 750;
-      border: 1px solid transparent;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-    }
-
-    .button:hover { transform: translateY(-2px); }
-
-    .button.primary {
-      color: #071017;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 14px 36px rgba(119, 214, 165, 0.18);
-    }
-
-    .button.secondary {
-      color: var(--text);
-      border-color: var(--line);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .tag-row, .skill-cloud, .project-meta, .code-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      padding: 0.35rem 0.7rem;
-      background: rgba(255, 255, 255, 0.055);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.86rem;
-      font-weight: 650;
-    }
-
-    .profile-card {
-      position: relative;
-      padding: 1rem;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .profile-image-wrap {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      background: linear-gradient(135deg, rgba(119, 214, 165, 0.16), rgba(125, 184, 255, 0.16));
-      border: 1px solid var(--line);
-    }
-
-    .profile-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .profile-placeholder {
-      height: 100%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: var(--muted);
-      padding: 2rem;
-    }
-
-    .profile-summary {
-      position: relative;
-      padding: 1.1rem 0.35rem 0.25rem;
-    }
-
-    .profile-summary h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .profile-summary p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    section { padding: 4.5rem 0; }
-
-    .section-heading {
-      display: grid;
-      grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.28fr);
-      align-items: end;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .section-kicker {
-      color: var(--accent);
-      font-weight: 750;
-      margin-bottom: 0.45rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .section-heading h2, .project-title {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.05em;
-    }
-
-    .section-heading p, .project-lead, .muted-copy { color: var(--muted); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-      gap: 1.25rem;
-    }
-
-    .panel {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.045);
-      border-radius: var(--radius);
-      padding: 1.35rem;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .panel h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.02em;
-    }
-
-    .panel p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .project-section {
-      border-top: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0));
-    }
-
-    .project-shell {
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 4px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.028));
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .project-intro {
-      padding: 1.4rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
-      gap: 1.25rem;
-      align-items: stretch;
-    }
-
-    .project-intro .media-frame {
-      height: auto;
-      max-height: 500px;
-      min-height: 250px;
-    }
-
-    .project-copy {
-      padding: 0.5rem;
-      display: grid;
-      align-content: center;
-    }
-
-    .project-brand-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .project-logo {
-      width: 76px;
-      height: 76px;
-      flex: 0 0 76px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(119, 214, 165, 0.14), rgba(125, 184, 255, 0.13)),
-        rgba(255, 255, 255, 0.035);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
-    }
-
-    .project-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 0.55rem;
-    }
-
-    .project-logo-placeholder {
-      display: none;
-      color: var(--muted);
-      font-size: 0.74rem;
-      line-height: 1.15;
-      text-align: center;
-      padding: 0.45rem;
-      font-weight: 700;
-    }
-
-    .project-copy .project-meta {
-      margin-bottom: 0;
-      flex: 1 1 260px;
-    }
-
-    .project-title { margin-bottom: 0.9rem; }
-    .project-lead { max-width: 760px; margin-bottom: 1.1rem; }
-
-    .metric-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 1rem;
-    }
-
-    .metric-pill {
-      border-radius: 12px;
-      padding: 0.45rem 0.6rem;
-      background: rgba(119, 214, 165, 0.11);
-      color: var(--text);
-      border: 1px solid rgba(119, 214, 165, 0.18);
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .media-frame, .media-box {
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(119, 214, 165, 0.12), rgba(125, 184, 255, 0.12)),
-        var(--card);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .media-frame {
-      min-height: 340px;
-      width: 100%;
-    }
-
-    .media-frame img, .media-frame video, .media-box img, .media-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .media-fallback {
-      min-height: 240px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 2rem;
-      color: var(--muted);
-      font-weight: 650;
-    }
-
-    .project-media-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-      gap: 1rem;
-      padding: 0 1.4rem 1.4rem;
-      align-items: stretch;
-    }
-
-    .media-card {
-      height: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--card);
-    }
-
-    .media-box {
-      aspect-ratio: 16 / 10;
-      width: 100%;
-      border: none;
-      border-radius: 0;
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .media-box:has(img), .media-box:has(video) {
-      padding: 0;
-    }
-
-    .caption {
-      padding: 0.85rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .subsection {
-      padding: 1.4rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .subsection-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    .subsection-header h3 {
-      font-size: clamp(1.45rem, 2.4vw, 2rem);
-      letter-spacing: -0.035em;
-    }
-
-    .subsection-header p {
-      color: var(--muted);
-      max-width: 640px;
-    }
-
-    .contribution-stack {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .contribution-card {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-      gap: 1rem;
-      padding: 1rem;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.038);
-      align-items: stretch;
-    } 
-
-        /* Base contribution layout */
-    .contribution-card {
-      align-items: stretch;
-    }
-
-    /* SINGLE MEDIA CARD CASE */
-    /* Applies only when the figure.media-card is a direct child of contribution-card */
-    .contribution-card > .media-card {
-      display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
-      height: 100%;
-      min-height: 0px;
-      overflow: hidden;
-    }
-
-    .contribution-card > .media-card .media-box {
-      aspect-ratio: auto;
-      height: 100%;
-      min-height: 200px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contribution-card > .media-card .media-box img,
-    .contribution-card > .media-card .media-box video,
-    .contribution-card > .media-card .media-box a,
-    .contribution-card > .media-card .media-box a img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .contribution-card > .media-card .media-box img,
-    .contribution-card > .media-card .media-box video,
-    .contribution-card > .media-card .media-box a img {
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* STACKED MEDIA CASE */
-    /* Applies when you have two or more media cards inside a wrapper */
-    .contribution-media-stack {
-      display: grid;
-      grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
-      gap: 1rem;
-      height: 100%;
-      align-self: start;
-      min-height: 0;
-    }
-
-    .contribution-media-stack .media-card {
-      display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
-      min-height: 0;
-      overflow: hidden;
-    }
-
-    .contribution-media-stack .media-box {
-      aspect-ratio: auto;
-      height: auto;
-      min-height: 200px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contribution-media-stack  .media-box img,
-    .contribution-media-stack .media-box video,
-    .contribution-media-stack .media-box a,
-    .contribution-media-stack .media-box a img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .contribution-media-stack .media-box img,
-    .contribution-media-stack .media-box video,
-    .contribution-media-stack .media-box a img {
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .contribution-card h4 {
-      font-size: 1.25rem;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.45rem;
-    }
-
-    .contribution-card p {
-      color: var(--muted);
-      margin-bottom: 0.85rem;
-    }
-
-    .detail-list {
-      display: grid;
-      gap: 0.55rem;
-      margin: 0.9rem 0;
-      color: var(--muted);
-      padding-left: 1.1rem;
-    }
-
-    .detail-list strong { color: var(--text); }
-
-    .code-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-      gap: 1rem;
-      align-items: stretch;
-    }
-
-    .code-card {
-      height: 100%;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-      background: #0a0f15;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.18);
-    }
-
-    .code-card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.055);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .code-card-header h4 {
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .code-card-header p {
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    .copy-button {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 0.5rem 0.65rem;
-      cursor: pointer;
-      font-weight: 750;
-      font-size: 0.82rem;
-      white-space: nowrap;
-    }
-
-    pre {
-      overflow-x: auto;
-      padding: 1rem;
-      color: #dce7ef;
-      font-family: var(--mono);
-      font-size: 0.84rem;
-      line-height: 1.55;
-      tab-size: 2;
-    }
-
-    .token-comment { color: #7f91a3; }
-    .token-keyword { color: #7db8ff; }
-    .token-string { color: #77d6a5; }
-    .token-number { color: #ffd38a; }
-
-    .contact-panel {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-      gap: 1.25rem;
-      align-items: stretch;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.35rem;
-      background: linear-gradient(135deg, rgba(119, 214, 165, 0.11), rgba(125, 184, 255, 0.10));
-      box-shadow: var(--shadow);
-    }
-
-    .contact-panel h2 {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      line-height: 1.05;
-      letter-spacing: -0.045em;
-      margin-bottom: 0.75rem;
-    }
-
-    .contact-panel p { color: var(--muted); max-width: 700px; }
-
-    .contact-links {
-      display: grid;
-      gap: 0.7rem;
-      align-content: center;
-    }
-
-    .contact-link {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.9rem;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(12, 17, 23, 0.35);
-      color: var(--text);
-      font-weight: 750;
-    }
-
-    .footer {
-      padding: 2rem 0;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      font-size: 0.92rem;
-    }
-
-    .footer .page-shell {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .scroll-hidden::-webkit-scrollbar {
-      display: none;              /* Chrome, Safari, Edge */
-    }
-
-    .contribution-text-media {
-      display: grid;
-      gap: 1rem;
-      align-content: start;
-    }
-
-    .contribution-text-media > .media-card {
-      display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
-      overflow: hidden;
-    }
-
-    .contribution-text-media .media-box{
-      aspect-ratio: auto;
-      height: auto;
-      min-height: 200px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* .contribution-media-stack {
-      display: grid;
-      gap: 1rem;
-      align-content: start;
-    } */
-
-    /* .contribution-text-media .media-box,
-    .contribution-media-stack .media-box {
-      height: clamp(180px, 18vw, 260px);
-      aspect-ratio: auto;
-      overflow: hidden;
-    } */
-
-    .contribution-text-media .media-box img,
-    .contribution-text-media .media-box video,
-    .contribution-media-stack .media-box img,
-    .contribution-media-stack .media-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .section-heading {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-card { max-width: 440px; }
-    }
-
-    @media (max-width: 760px) {
-      .nav-links {
-        position: absolute;
-        left: 1rem;
-        right: 1rem;
-        top: 78px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.25rem;
-        padding: 0.75rem;
-        border-radius: 18px;
-        background: rgba(12, 17, 23, 0.96);
-        border: 1px solid var(--line);
-      }
-
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 0.85rem; }
-      .mobile-menu-button { display: inline-flex; }
-      .hero { padding: 4rem 0 3rem; }
-      section { padding: 3.25rem 0; }
-      .subsection-header { display: block; }
-      .subsection-header p { margin-top: 0.4rem; }
-      .code-card-header { flex-direction: column; }
-    }
-
-    .expandable-image {
-  cursor: zoom-in;
-}
-
-
-#imageModal {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  width: min(92vw, 1100px);
-  max-height: 90dvh;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 1rem;
-  background: var(--bg);
-  color: var(--text);
-  overflow: hidden;
-}
-
-#imageModal[open] {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 0.75rem;
-}
-
-#imageModal::backdrop {
-  background: rgba(0, 0, 0, 0.78);
-}
-
-#modalImage {
-  width: 100%;
-  height: 100%;
-  max-height: 78dvh;
-  object-fit: contain;
-}
-
-#closeImageModal {
-  justify-self: end;
-  padding: 0.55rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--text);
-  cursor: pointer;
-}
-
-
-
+    :root { --ink: #232729; --muted: #555e62; --accent: #6b242c; --line: #d3d8da; --paper: #fff; --wash: #f2f4f4; --serif: Georgia, 'Times New Roman', serif; --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.7; }
+    a { color: inherit; text-underline-offset: .24em; text-decoration-thickness: 1px; }
+    a:hover { color: var(--accent); }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    img { display: block; max-width: 100%; height: auto; }
+    figure { margin: 0; min-width: 0; }
+    h1, h2, h3, h4, p { margin: 0; }
+    h1, h2, h3, h4 { font-weight: 400; }
+    .wrap { width: min(1120px, calc(100% - 5rem)); margin-inline: auto; }
+    .skip-link { position: absolute; top: -6rem; left: 1rem; z-index: 10; padding: .75rem; background: white; }
+    .skip-link:focus { top: 1rem; }
+    .masthead { border-bottom: 1px solid var(--line); }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { font-weight: 650; text-decoration: none; letter-spacing: -.025em; font-size: 1.15rem; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 1.8rem; font-size: .9375rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { text-decoration: underline; }
+    .eyebrow { color: var(--accent); font-size: .875rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+    .hero { padding: 5.5rem 0 4.5rem; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 6rem; align-items: start; }
+    h1 { font-family: var(--serif); font-size: clamp(3.8rem, 8vw, 6.6rem); line-height: 1.02; letter-spacing: -.065em; margin: 1rem 0 1.6rem; }
+    .hero-lead { font-size: clamp(1.15rem, 2.1vw, 1.4rem); line-height: 1.6; max-width: 660px; }
+    .hero-note { color: var(--muted); max-width: 640px; margin-top: 1rem; }
+    .hero-links { display: flex; gap: 1.8rem; flex-wrap: wrap; margin-top: 1.8rem; font-weight: 600; }
+    .portrait { padding-top: .4rem; }
+    .portrait img { width: 250px; }
+    figcaption { color: var(--muted); font-size: .875rem; line-height: 1.6; margin-top: .8rem; }
+    .portrait figcaption { border-top: 1px solid var(--line); padding-top: .8rem; }
+    .focus { margin-top: 3.5rem; border-block: 1px solid var(--line); display: grid; grid-template-columns: 220px 1fr; gap: 2rem; padding: 1.6rem 0; }
+    .focus p:last-child { max-width: 720px; }
+    .work-index { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-bottom: 4.5rem; }
+    .index-item { display: block; text-decoration: none; border-top: 2px solid var(--ink); padding-top: 1rem; }
+    .index-item span { font-size: .875rem; color: var(--muted); }
+    .index-item h2 { font-family: var(--serif); font-size: 1.9rem; line-height: 1.25; margin: .4rem 0 .6rem; }
+    .index-item p { color: var(--muted); }
+    .project { padding: 4.5rem 0 5.5rem; border-top: 1px solid var(--line); }
+    .project.alt { background: var(--wash); }
+    .project-header { display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; margin-bottom: 2.8rem; }
+    .project-title { font-family: var(--serif); font-size: clamp(2.5rem, 4.8vw, 3.7rem); line-height: 1.12; letter-spacing: -.035em; margin-top: .8rem; }
+    .project-summary { padding-top: .2rem; }
+    .project-summary > p { font-size: 1.125rem; }
+    .scope { border-top: 1px solid var(--line); margin-top: 1.4rem; padding-top: .9rem; font-size: .9375rem; color: var(--muted); }
+    .scope strong { color: var(--ink); font-weight: 600; }
+    .feature-image { background: var(--wash); }
+    .feature-image img { width: 100%; }
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: start; }
+    .gallery .image-surface { background: var(--wash); display: flex; justify-content: center; align-items: center; }
+    .gallery img { width: auto; max-height: 480px; object-fit: contain; }
+    .alt .image-surface { background: #fff; }
+    .section-label { padding-top: 4rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+    .section-label h3 { font-family: var(--serif); font-size: 2rem; letter-spacing: -.025em; }
+    .contribution { padding: 2.4rem 0; border-bottom: 1px solid var(--line); }
+    .contribution:last-child { border-bottom: 0; padding-bottom: 0; }
+    .contribution-heading { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; }
+    .contribution h4 { font-family: var(--serif); font-size: 1.6rem; line-height: 1.3; }
+    .prose p + p { margin-top: 1rem; }
+    .tools { color: var(--accent); font-size: .875rem; margin-top: 1rem; }
+    .technical-figure { margin: 2.5rem auto 0; max-width: 960px; }
+    .technical-figure img { width: auto; margin-inline: auto; }
+    .technical-figure .image-surface { padding: 1.5rem; background: white; border: 1px solid var(--line); }
+    .technical-figure figcaption { max-width: 800px; margin-inline: auto; }
+    .technical-figure figcaption strong { color: var(--ink); font-weight: 600; }
+    .kiosk-layout { display: grid; grid-template-columns: 1fr 280px; gap: 3rem; margin-top: 2rem; align-items: center; }
+    .kiosk-layout .prose { max-width: 570px; }
+    .kiosk-layout img { width: 100%; }
+    .glove-overview { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; align-items: center; }
+    .glove-overview img { max-height: 540px; width: auto; margin-inline: auto; }
+    .glove-overview .image-surface { background: white; padding: 1.5rem; }
+    .glove-overview figure:last-child img { max-height: 440px; }
+    .hardware-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: start; }
+    .hardware-pair img { max-height: 420px; margin-inline: auto; object-fit: contain; }
+    .contact { padding: 4rem 0; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; }
+    .contact h2 { font-family: var(--serif); font-size: 2.6rem; line-height: 1.15; margin-top: .6rem; }
+    .contact-links { display: grid; gap: .9rem; align-content: center; }
+    .contact-links a { width: fit-content; overflow-wrap: anywhere; }
+    .footer { border-top: 1px solid var(--line); padding: 1.3rem 0; color: var(--muted); font-size: .875rem; }
+    .footer .wrap { display: flex; justify-content: space-between; gap: 1rem; }
+    @media (max-width: 900px) {
+      .hero-grid { gap: 2.5rem; grid-template-columns: 1fr 200px; }
+      .project-header { gap: 2rem; }
+      .contribution-heading { grid-template-columns: 220px 1fr; gap: 2rem; }
+      .focus { grid-template-columns: 180px 1fr; }
+    }
+    @media (max-width: 640px) {
+      html { scroll-padding-top: 1rem; }
+      .wrap { width: calc(100% - 2.5rem); }
+      .nav { padding-block: 1rem; align-items: flex-start; flex-direction: column; gap: .6rem; }
+      .nav-links { gap: 1.3rem; }
+      .hero { padding: 3rem 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .portrait { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; align-items: end; }
+      .portrait img { width: 140px; }
+      .portrait figcaption { margin: 0; }
+      .focus { grid-template-columns: 1fr; gap: .6rem; margin-top: 2.5rem; }
+      .work-index { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
+      .project { padding: 3rem 0; }
+      .project-header, .contribution-heading, .glove-overview, .kiosk-layout, .contact-inner { grid-template-columns: 1fr; gap: 1.3rem; }
+      .gallery, .hardware-pair { grid-template-columns: 1fr; gap: 1.5rem; }
+      .gallery img { max-height: none; }
+      .section-label { padding-top: 2.8rem; }
+      .contribution { padding: 1.8rem 0; }
+      .technical-figure { margin-top: 1.8rem; }
+      .technical-figure .image-surface { padding: .5rem; }
+      .kiosk-layout figure { max-width: 300px; margin-inline: auto; }
+      .glove-overview .image-surface { padding: 1rem; }
+      .contact { padding: 3rem 0; }
+      .footer .wrap { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <nav class="nav" aria-label="Primary navigation">
-    <div class="page-shell nav-inner">
-      <a class="brand" href="#top" aria-label="Jason Gomez portfolio home">
-        <span class="brand-mark">JG</span>
-        <span>Jason Gomez</span>
-      </a>
-      <button class="mobile-menu-button" type="button" aria-label="Open navigation" data-menu-button>Menu</button>
-      <div class="nav-links" data-nav-links>
-        <a href="#about">About</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead" id="top">
+    <nav class="wrap nav" aria-label="Primary navigation">
+      <a class="brand" href="#top">Jason Gomez</a>
+      <div class="nav-links">
         <a href="#lechuga">Lechuga</a>
-        <a href="#rehab-glove">Rehab Glove</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="#rehab-glove">Rehab glove</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
-  </nav>
-
-  <main id="top">
-    <header class="hero" id="about">
-      <div class="page-shell hero-grid">
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" id="about" aria-labelledby="page-title">
+      <div class="hero-grid">
         <div>
-          <span class="eyebrow">Automation · Embedded Systems · Systems Integration</span>
-          <h1>Jason Gomez Engineering Portfolio.</h1>
-          <p class="hero-lead">
-            I work across software, embedded control, electronics testing, and system integration. My projects focus on building automation systems from early prototypes into coordinated hardware-software platforms.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#lechuga">View Lechuga Project</a>
-            <a class="button secondary" href="#rehab-glove">View Rehab Glove</a>
+          <p class="eyebrow">Automation engineer · Texas A&amp;M graduate</p>
+          <h1 id="page-title">Jason Gomez</h1>
+          <p class="hero-lead">I build the connections between electronics, embedded software, and the physical systems they control.</p>
+          <p class="hero-note">I’m an automation engineer and a Texas A&amp;M mechatronics graduate. My project work spans machine coordination, wearable sensing, and the measurements that make those systems useful.</p>
+          <div class="hero-links">
+            <a href="#selected-work">Explore selected work</a>
+            <a href="./JasonGomezResume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
           </div>
         </div>
-
-        <aside class="profile-card" aria-label="Profile summary card">
-          <div class="profile-image-wrap">
-            <img src="./jasonImage.jpg" alt="Jason Gomez" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-            <div class="profile-placeholder" style="display:none;">Add a professional photo of yourself here.</div>
-          </div>
-          <div class="profile-summary">
-            <h2>Jason Gomez</h2>
-            <p>Texas A&amp;M Mechatronics graduate focused on controls, automation, embedded systems, and system integration.</p>
-          </div>
-        </aside>
+        <figure class="portrait">
+          <img src="./jasonImage.jpg" width="2540" height="2244" alt="Jason Gomez standing beside machining equipment">
+          <figcaption>Mechatronics background.<br>Automation in practice.</figcaption>
+        </figure>
       </div>
-    </header>
-
-
-    <!-- =========================================================
-      PROJECT MODULE START
-      Copy this entire project-section block to add another project.
-      Structure:
-      1. Project overview with optional project logo
-      2. Project-wide media
-      3. Contribution cards, each with optional media
-      4. Project-specific code excerpts
-
-      Layout note:
-      Media cards, contribution cards, and code cards use auto-fit grids.
-      You can add or remove entire <figure class="media-card"> blocks,
-      <article class="code-card"> blocks, or contribution media figures
-      without changing the CSS.
-    ========================================================== -->
-
-    <section class="project-section" id="lechuga">
-      <div class="page-shell">
-        <div class="section-heading">
+      <div class="focus">
+        <p class="eyebrow">Looking ahead</p>
+        <p>My next academic goal is a master’s degree in electrical engineering at Texas A&amp;M. I want to build on my experience in embedded control, electronics, and sensor characterization through deeper study.</p>
+      </div>
+    </section>
+    <div class="wrap work-index" id="selected-work" aria-label="Selected engineering projects">
+      <a class="index-item" href="#lechuga">
+        <span>Machine automation</span>
+        <h2>Lechuga</h2>
+        <p>From a customer order to coordinated motion across an automated food service prototype.</p>
+      </a>
+      <a class="index-item" href="#rehab-glove">
+        <span>Wearable instrumentation · Capstone</span>
+        <h2>Rehabilitation glove</h2>
+        <p>From raw sensor readings to measurements of hand motion and grip force.</p>
+      </a>
+    </div>
+    <section class="project" id="lechuga" aria-labelledby="lechuga-title">
+      <div class="wrap">
+        <header class="project-header">
           <div>
-            <p class="section-kicker">Project 01</p>
-            <h2>Lechuga automated food service system.</h2>
+            <p class="eyebrow">Machine automation</p>
+            <h2 class="project-title" id="lechuga-title">Lechuga<br>Automated food service</h2>
           </div>
+          <div class="project-summary">
+            <p>Lechuga is a prototype for assembling bowl-based meals. A customer kiosk connects to a machine of coordinated hoppers, conveyors, actuators, and sensors.</p>
+            <div class="scope"><strong>My focus</strong><br>Software architecture, kiosk and backend development, order coordination, embedded motor control, and communication between subsystems.</div>
+          </div>
+        </header>
+        <figure>
+          <div class="feature-image"><img src="./MostRecentSystemImage.jpeg" width="1017" height="594" loading="lazy" alt="Assembled Lechuga prototype with ingredient hoppers, conveyor, and bowl delivery mechanism"></div>
+          <figcaption>The assembled food service prototype, bringing dispensing, bowl movement, and delivery into one system.</figcaption>
+        </figure>
+        <div class="gallery">
+          <figure>
+            <div class="image-surface"><img src="./renderSystem1.jpeg" width="1366" height="1110" loading="lazy" alt="CAD rendering of the complete Lechuga machine layout"></div>
+            <figcaption>Planned mechanical layout in CAD.</figcaption>
+          </figure>
+          <figure>
+            <div class="image-surface"><img src="./UpcomingPrototype.JPG" width="1055" height="692" loading="lazy" alt="Lechuga prototype on a workshop bench during assembly"></div>
+            <figcaption>Build progress with Jeremiah.</figcaption>
+          </figure>
         </div>
-
-        <article class="project-shell">
-          <div class="project-intro">
-            <div class="project-copy">
-              <div class="project-brand-row">
-                <div class="project-logo" aria-label="Lechuga project logo">
-                  <img src="./logoLechuga.png" alt="Lechuga logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-                  <div class="project-logo-placeholder">Add<br>Logo</div>
-                </div>
-                <div class="project-meta">
-                  <span class="tag">System integration</span>
-                  <span class="tag">Motion Control</span>
-                  <span class="tag">Embedded Systems</span>
-                  <span class="tag">Sensor and Electronics Selection</span>
-                </div>
-              </div>
-
-              <h3 class="project-title">Automated bowl assembly from kiosk order to physical fulfillment.</h3>
-              <p class="project-lead">
-                Lechuga is an automated food service prototype designed to assemble bowl-based meals using coordinated hoppers, conveyors, actuators, sensors, and a customer kiosk interface. My work focused on software architecture, order coordination, kiosk/backend development, embedded motor control, communication between controllers, and error handling across subsystems.
-              </p>
-            </div>
-
-            <div class="media-frame">
-              <img class="expandable-image" src="./MostRecentSystemImage.jpeg" alt="Lechuga automated food service system render" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+        <div class="gallery">
+          <figure>
+            <div class="image-surface"><img src="./SystemBeingBuilt1.jpeg" width="1200" height="1376" loading="lazy" alt="Top view of the Lechuga conveyor and bowl handling hardware during assembly"></div>
+            <figcaption>Top view of the machine during assembly.</figcaption>
+          </figure>
+          <figure>
+            <div class="image-surface"><img src="./SystemBeingBuilt2.jpeg" width="837" height="1006" loading="lazy" alt="Alexis and Jeremiah beside the Lechuga prototype in the workshop"></div>
+            <figcaption>Build progress with Alexis and Jeremiah.</figcaption>
+          </figure>
+        </div>
+        <div class="section-label"><h3>My contributions</h3></div>
+        <article class="contribution">
+          <div class="contribution-heading">
+            <h4>Customer ordering interface</h4>
+            <div class="prose">
+              <p>I developed the kiosk application using a web front end, Node.js backend, and Electron wrapper. I worked with a UI freelancer on the initial Figma design, used AI-assisted tools to help implement it, and then manually refined the layout, responsiveness, and behavior for the physical kiosk.</p>
+              <p>The application supports multiple kiosk clients, Stripe card payments, electronic receipts, and cloud order history. It sends completed orders to the automation system and prevents new orders when machine faults make fulfillment unreliable.</p>
+              <p class="tools">TypeScript · Node.js · Electron · Stripe API</p>
             </div>
           </div>
-
-          <div class="project-media-strip" aria-label="Lechuga full project media">
-            <figure class="media-card">
-              <div class="media-box">
-                <img class="expandable-image" src="./renderSystem1.jpeg" alt="Lechuga system render alternate view" onerror="this.style.display='none'; this.parentElement.textContent='Add alternate system render.';" />
-              </div>
-              <figcaption class="caption">Full-system render showing planned mechanical layout.</figcaption>
-            </figure>
-
-            <figure class="media-card">
-              <div class="media-box">
-                <img class="expandable-image" src="./UpcomingPrototype.JPG" alt="Lechuga upcoming prototype" onerror="this.style.display='none'; this.parentElement.textContent='Add prototype photo.';" />
-              </div>
-              <figcaption class="caption">Build progress photo with Jeremiah.</figcaption>
+          <div class="kiosk-layout">
+            <div class="prose"><p>The interface is part of the machine’s control flow: an accepted order must reach the automation controller, and machine availability must be reflected back to the customer.</p></div>
+            <figure>
+              <img src="./ItemPageImage.JPG" width="476" height="829" loading="lazy" alt="Complete kiosk item selection screen with ingredient choices, bowl preview, and price">
+              <figcaption>The complete item-selection screen.</figcaption>
             </figure>
           </div>
-
-          <div class="project-media-strip" aria-label="Lechuga full project media">
-            <figure class="media-card">
-              <div class="media-box">
-                <img class="expandable-image" src="./SystemBeingBuilt1.jpeg" alt="Lechuga system render alternate view" onerror="this.style.display='none'; this.parentElement.textContent='Add alternate system render.';" />
-              </div>
-              <figcaption class="caption">Build progress photo top view.</figcaption>
-            </figure>
-
-            <figure class="media-card">
-              <div class="media-box">
-                <img class="expandable-image" src="./SystemBeingBuilt2.jpeg" alt="Lechuga upcoming prototype" onerror="this.style.display='none'; this.parentElement.textContent='Add prototype photo.';" />
-              </div>
-              <figcaption class="caption">Build progress photo with Alexis and Jeremiah.</figcaption>
-            </figure>
-          </div>
-
-          <div class="subsection">
-            <div class="subsection-header">
-              <div>
-                <p class="section-kicker">My contributions</p>
-                <h3>Specific work I did on Lechuga</h3>
-              </div>
-            </div>
-
-            <div class="contribution-stack">
-              <article class="contribution-card">
-                <div>
-                  <h4>Customer Ordering Interface</h4>
-                  <p>
-                    Developed a kiosk ordering application for the Automated Lechuga system using a web front end, Node.js backend, and Electron wrapper. I worked with a UI freelancer to create the initial design in Figma, then used AI-assisted development tools to convert the design into working code. From there, I manually iterated on the generated code by fixing layout bugs, refining the visual design, improving responsiveness, and adapting the interface to match the needs of the physical kiosk system. The application supports multiple kiosk clients, accepts card payments through Stripe, sends electronic receipts, communicates completed orders to the automation system, uploads order history to the cloud, and responds to machine faults by preventing customers from placing orders when the automated system cannot reliably fulfill them.
-                  </p>
-                  <div class="skill-cloud">
-                    <span class="tag">TypeScript</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Electron</span>
-                    <span class="tag">Stripe API</span>
-                  </div>
-                </div>
-
-                <figure class="media-card">
-                  <div class="media-box">
-                    <img 
-                    src="./ItemPageImage.JPG" 
-                    alt="Lechuga kiosk item page" 
-                    onerror="this.style.display='none'; this.parentElement.textContent='Add kiosk UI screenshot.';" 
-                    class="expandable-image"
-                    />
-                  </div>
-                  <figcaption class="caption">Kiosk item-selection screen associated with the ordering interface.</figcaption>
-                </figure>
-              </article>
-
-              <article class="contribution-card">
-                <div>
-                  <h4>Order and Automation Controller</h4>
-                  <p>
-                    Developed a coordinator program responsible for converting customer orders from the kiosk into a format usable by the automation system. The controller determines what each subsystem needs to do to fulfill each bowl, sends motion instructions to the appropriate devices, tracks bowls as they move through the system, and monitors completion status. It also communicates faults to the outside world by updating the kiosk interface for customers and notifying operators through text or email when an error occurs. Because the controller must manage orders, subsystem states, machine feedback, and external communication at the same time, it uses concurrent programming techniques and message-based coordination to keep the system organized and responsive.
-                  </p>
-                  <div class="skill-cloud">
-                    <span class="tag">Python</span>
-                    <span class="tag">Concurrency</span>
-                    <span class="tag">Order routing</span>
-                    <span class="tag">APIs</span>
-                  </div>
-                </div>
-              </article>
-
-              <article class="contribution-card">
-                <div>
-                  <h4>Embedded Motor Control and Actuator Coordination</h4>
-                  <p>
-                     Programmed embedded control logic for the machine subsystems using state-machine-based sequencing. Each subsystem determines its next action based on the command received from the coordinator, its own current state, and the reported state of other subsystems. Motors are controlled using hardware timers on the Teensy microcontrollers and follow motion profiles to reduce jerk during movement. Subsystems communicate through CAN bus messaging, allowing the larger machine to coordinate actions across food dispensing, bowl movement, and delivery mechanisms. Sensors are placed throughout the system for homing and zeroing, tracking food dispensing, detecting subsystem position, and providing redundant verification that commanded actions were completed correctly.  
-                  </p>
-                  <div class="skill-cloud">
-                    <span class="tag">C/C++</span>
-                    <span class="tag">CMake</span>
-                    <span class="tag">Hardware timers</span>
-                    <span class="tag">CAN bus</span>
-                  </div>
-                </div>
-              </article>
+        </article>
+        <article class="contribution">
+          <div class="contribution-heading">
+            <h4>Order and automation controller</h4>
+            <div class="prose">
+              <p>I developed the coordinator that translates kiosk orders into subsystem instructions. It determines the actions needed for each bowl, tracks bowls through the machine, dispatches motion commands, and monitors completion.</p>
+              <p>Concurrent programming and message-based coordination let it manage orders, subsystem states, and machine feedback together. Faults are communicated to the kiosk and to operators through text or email.</p>
+              <p class="tools">Python · Concurrency · Order routing · APIs</p>
             </div>
           </div>
-
-          <div class="subsection">
-            <div class="subsection-header">
-              <div>
-                <p class="section-kicker">Code excerpts</p>
-                <h3>Lechuga code slices</h3>
-              </div>
-            </div>
-
-            <div class="code-grid">
-              <article class="code-card">
-                <div class="code-card-header">
-                  <div>
-                    <h4>Typed order command</h4>
-                    <p>Shows the interface between kiosk order data and automation commands.</p>
-                  </div>
-                  <button class="copy-button" type="button" data-copy-target="lechuga-code-order">Copy</button>
-                </div>
-                <pre class="scroll-hidden" id="lechuga-code-order"><code><span class="token-keyword">type</span> IngredientId = <span class="token-string">"rice"</span> | <span class="token-string">"chicken"</span> | <span class="token-string">"lettuce"</span> | <span class="token-string">"salsa"</span>;
-
-<span class="token-keyword">interface</span> BowlOrder {
-  orderId: string;
-  createdAt: string;
-  ingredients: IngredientId[];
-  paymentStatus: <span class="token-string">"pending"</span> | <span class="token-string">"paid"</span> | <span class="token-string">"failed"</span>;
-}
-
-<span class="token-keyword">function</span> buildAutomationCommand(order: BowlOrder) {
-  <span class="token-keyword">if</span> (order.paymentStatus !== <span class="token-string">"paid"</span>) {
-    <span class="token-keyword">throw new</span> Error(<span class="token-string">"Order cannot be dispatched before payment."</span>);
-  }
-
-  <span class="token-keyword">return</span> {
-    command: <span class="token-string">"DISPATCH_ORDER"</span>,
-    orderId: order.orderId,
-    dispenseList: order.ingredients.map((ingredient, index) =&gt; ({
-      ingredient,
-      sequence: index + <span class="token-number">1</span>
-    }))
-  };
-}</code></pre>
-              </article>
-
-              <article class="code-card">
-                <div class="code-card-header">
-                  <div>
-                    <h4>Embedded state-machine pattern</h4>
-                    <p>Shows explicit actuator states for movement, homing, completion, and faults.</p>
-                  </div>
-                  <button class="copy-button" type="button" data-copy-target="lechuga-code-state">Copy</button>
-                </div>
-                <pre class="scroll-hidden" id="lechuga-code-state"><code><span class="token-keyword">enum class</span> AxisState {
-  Idle,
-  Homing,
-  Moving,
-  Complete,
-  Fault
-};
-
-<span class="token-keyword">void</span> updateAxis(Axis&amp; axis) {
-  <span class="token-keyword">switch</span> (axis.state) {
-    <span class="token-keyword">case</span> AxisState::Idle:
-      <span class="token-keyword">if</span> (axis.hasQueuedMove()) axis.beginMove();
-      <span class="token-keyword">break</span>;
-
-    <span class="token-keyword">case</span> AxisState::Homing:
-      <span class="token-keyword">if</span> (axis.homeSensorActive()) axis.zeroPosition();
-      <span class="token-keyword">break</span>;
-
-    <span class="token-keyword">case</span> AxisState::Moving:
-      axis.stepWithAccelerationProfile();
-      <span class="token-keyword">if</span> (axis.targetReached()) axis.state = AxisState::Complete;
-      <span class="token-keyword">break</span>;
-
-    <span class="token-keyword">case</span> AxisState::Fault:
-      axis.disableDriver();
-      <span class="token-keyword">break</span>;
-  }
-}</code></pre>
-              </article>
+        </article>
+        <article class="contribution">
+          <div class="contribution-heading">
+            <h4>Embedded motion control</h4>
+            <div class="prose">
+              <p>I programmed state-machine-based sequencing for the embedded subsystems. Each controller responds to coordinator commands, its own state, and the reported states of other devices. Hardware timers on Teensy microcontrollers drive motors through motion profiles intended to reduce jerk.</p>
+              <p>CAN bus messaging coordinates food dispensing, bowl movement, and delivery. Sensors support homing, position detection, dispensing feedback, and redundant checks that commanded actions have completed.</p>
+              <p class="tools">C/C++ · CMake · Hardware timers · CAN bus</p>
             </div>
           </div>
         </article>
       </div>
     </section>
-
-    <section class="project-section" id="rehab-glove">
-      <div class="page-shell">
-        <div class="section-heading">
+    <section class="project alt" id="rehab-glove" aria-labelledby="glove-title">
+      <div class="wrap">
+        <header class="project-header">
           <div>
-            <p class="section-kicker">Project 02</p>
-            <h2>Sensorized rehabilitation glove and grip-strength device.</h2>
+            <p class="eyebrow">Wearable instrumentation · Capstone</p>
+            <h2 class="project-title" id="glove-title">Measuring hand motion &amp; grip</h2>
           </div>
+          <div class="project-summary">
+            <p>A sensorized rehabilitation glove and grip-strength device collect motion and force data during rehabilitation exercises, using flex sensors, IMUs, force-sensitive resistors, and a wrist pulse-ox sensor.</p>
+            <div class="scope"><strong>My focus</strong><br>Embedded acquisition, sensor characterization, PCB design, communication, and signal processing.</div>
+          </div>
+        </header>
+        <div class="glove-overview">
+          <figure>
+            <div class="image-surface"><img src="./ImageOfGlove.jpeg" width="833" height="1132" loading="lazy" alt="Wearable glove prototype with finger sensors, wiring, and wrist electronics"></div>
+            <figcaption>The assembled wearable sensing platform.</figcaption>
+          </figure>
+          <figure>
+            <div class="image-surface"><img src="./GloveRender.JPG" width="580" height="510" loading="lazy" alt="Exploded CAD views showing the glove components and grip-strength device"></div>
+            <figcaption>Component layout for the glove and grip-strength device.</figcaption>
+          </figure>
         </div>
-
-        <article class="project-shell">
-          <div class="project-intro">
-            <div class="project-copy">
-              <div class="project-brand-row">
-                <div class="project-logo" aria-label="Rehabilitation glove project logo">
-                  <img src="./logoCapstone.png" alt="Rehabilitation glove logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-                  <div class="project-logo-placeholder">Add<br>Logo</div>
-                </div>
-                <div class="project-meta">
-                  <span class="tag">Data Acquisition</span>
-                  <span class="tag">PCB Design</span>
-                  <span class="tag">Data Processing</span>
-                  <span class="tag">Sensor Characterization</span>
-                </div>
-              </div>
-
-              <h3 class="project-title">Wearable sensing platform for hand motion and grip measurements.</h3>
-              <p class="project-lead">
-                This capstone project measures hand motion and grip behavior during rehabilitation exercises. The system uses flex sensors, IMUs, force-sensitive resistors, and a wrist pulse-ox sensor to collect therapy-relevant data. My work focused on embedded architecture, data acquisition, communication, pcb design, and sensor characterization.
-              </p>
-            </div>
-
-            <div class="media-frame">
-              <img class="expandable-image" src="./ImageOfGlove.jpeg" alt="Sensorized rehabilitation glove prototype" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+        <figure class="technical-figure">
+          <div class="image-surface"><img src="./CapstoneUI.png" width="1586" height="901" loading="lazy" alt="Rehabilitation dashboard showing sensor measurements and exercise information"></div>
+          <figcaption>The therapist and patient interface presents measurements collected by the system.</figcaption>
+        </figure>
+        <div class="section-label"><h3>My contributions</h3></div>
+        <article class="contribution">
+          <div class="contribution-heading">
+            <h4>Embedded data acquisition</h4>
+            <div class="prose">
+              <p>I planned and developed the architecture for sampling glove sensors at consistent, known rates and transmitting readings over Bluetooth Low Energy. FreeRTOS tasks separate scheduling, acquisition, communication, and logging; queues carry data between them.</p>
+              <p>Each transmitted sample includes a sensor ID, raw value, timestamp, and sequence number. I checked timing through logs of the mean sampling period and its deviation, with measured deviations in the tens of microseconds.</p>
+              <p class="tools">FreeRTOS · BLE · C/C++ · Data acquisition</p>
             </div>
           </div>
-
-          <div class="project-media-strip" aria-label="Rehabilitation glove full project media">
-            <figure class="media-card">
-              <div class="media-box">
-                <img class="expandable-image" src="./GloveRender.JPG" alt="Rendering of Glove" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-              </div>
-              <figcaption class="caption">Glove Rendering which shows individual components.</figcaption>
+          <figure class="technical-figure">
+            <div class="image-surface"><img src="./SoftwareArch.JPG" width="636" height="737" loading="lazy" alt="Data acquisition architecture diagram showing scheduling, sensor acquisition, queues, and communication tasks"></div>
+            <figcaption><strong>Acquisition architecture.</strong> Scheduling, data collection, and transmission are separated into tasks connected by queues.</figcaption>
+          </figure>
+        </article>
+        <article class="contribution">
+          <div class="contribution-heading">
+            <h4>Calibration and signal quality</h4>
+            <div class="prose">
+              <p>I researched and implemented a characterization plan for the flex sensors, force sensors, and IMUs. For analog sensors, I examined noise floor, drift, hysteresis, and the relationship between voltage and physical movement or force.</p>
+              <p>These measurements supported calibration and helped distinguish meaningful changes from noise or drift. For the IMUs, I gathered parameters for initial Extended Kalman Filter covariance values and considered the effects of bias, noise, and starting orientation.</p>
+              <p class="tools">IMUs · ADC · Hysteresis and drift · Noise characterization</p>
+            </div>
+          </div>
+          <figure class="technical-figure">
+            <div class="image-surface"><img src="./ForceSensorExample.JPG" width="828" height="490" loading="lazy" alt="Force sensor characterization plot comparing loading and unloading measurements against applied force"></div>
+            <figcaption><strong>Force sensor characterization.</strong> Loading and unloading measurements reveal the sensor response and hysteresis used to inform calibration.</figcaption>
+          </figure>
+          <figure class="technical-figure">
+            <div class="image-surface"><img src="./AllanDeviations.JPG" width="699" height="494" loading="lazy" alt="Logarithmic gyroscope Allan deviation plot showing the x, y, and z axes over averaging time"></div>
+            <figcaption><strong>IMU noise characterization.</strong> Gyroscope Allan deviation was used to estimate bias instability for the Extended Kalman Filter.</figcaption>
+          </figure>
+          <figure class="technical-figure">
+            <div class="image-surface"><img src="./orthogonalityCorrection.JPG" width="565" height="376" loading="lazy" alt="Accelerometer calibration output showing axis misalignment and scale-factor correction matrices"></div>
+            <figcaption><strong>Accelerometer calibration.</strong> Axis orthogonality and scale-factor correction support more consistent motion measurements.</figcaption>
+          </figure>
+        </article>
+        <article class="contribution">
+          <div class="contribution-heading">
+            <h4>Electronics and PCB design</h4>
+            <div class="prose">
+              <p>I selected sensors, ADCs, multiplexers, microcontroller hardware, and supporting circuitry around the measurement requirements and physical constraints of the glove. I designed the analog front end for flex and force sensors, including voltage dividers, buffering, and low-pass filtering.</p>
+              <p>Filter cutoff frequencies were chosen around expected finger movement and grip-force changes. I also selected packages, created schematics, and laid out the PCBs, considering routing, manufacturability, board size, and integration with the wearable assembly.</p>
+              <p class="tools">KiCad · PCB layout · Mixed-signal electronics · Analog conditioning</p>
+            </div>
+          </div>
+          <div class="hardware-pair">
+            <figure>
+              <img src="./SolderedPCBs.jpeg" width="574" height="559" loading="lazy" alt="Fabricated circuit boards with electronic components soldered in place">
+              <figcaption>Fabricated and populated circuit boards.</figcaption>
             </figure>
-
-            <figure class="media-card">
-              <div class="media-box">
-                <img class="expandable-image" src="./CapstoneUI.png" alt="Glove UI" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-              </div>
-              <figcaption class="caption">UI that therapist and patient interacts with.</figcaption>
+            <figure>
+              <img src="./AnalogPCB.jpeg" width="1300" height="965" loading="lazy" alt="Three-dimensional PCB render of the analog sensor conditioning board">
+              <figcaption>Analog sensor conditioning board layout.</figcaption>
             </figure>
           </div>
-
-          <div class="subsection">
-            <div class="subsection-header">
-              <div>
-                <p class="section-kicker">My contributions</p>
-                <h3>Specific work I did on the rehab glove</h3>
-              </div>
-            </div>
-
-            <div class="contribution-stack">
-              <article class="contribution-card">
-                <div>
-                  <h4>Embedded Data Acquisition Architecture</h4>
-                  <p>
-                    Planned and developed the embedded data acquisition architecture for the rehabilitation glove. The program samples sensors on the glove at consistent, known rates and transmits the data over Bluetooth Low Energy to an external processing program. I used FreeRTOS to separate the system into decoupled tasks for scheduling, acquisition, communication, and logging, with queues used to pass data between tasks cleanly. The transmitted data includes the sensor ID, raw sensor value, timestamp, and sequence number, which makes the data easier to process, debug, and verify. Sampling performance was checked through logging of the mean sampling period and timing deviation, with measured deviations in the tens of microseconds.
-                  </p>
-                  <div class="skill-cloud">
-                    <span class="tag">Data Acquisition</span>
-                    <span class="tag">FreeRTOS</span>
-                    <span class="tag">BLE</span>
-                    <span class="tag">C/C++</span>
-                  </div>
-                </div>
-
-                <figure class="media-card">
-                  <div class="media-box">
-                    <img class="expandable-image" src="./SoftwareArch.JPG" alt="Glove UI" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-                  </div>
-                  <figcaption class="caption">Software architecture diagram for data acquisition.</figcaption>
-                </figure>
-              </article>
-
-              <article class="contribution-card">
-                <div class="contribution-text-media">
-                  <div class="contribution-text">
-                    <h4>Calibration and Signal Quality</h4>
-                    <p>
-                      Researched and implemented a calibration and signal-quality plan for the glove’s flex sensors, force sensors, and IMUs. For the analog sensors, this involved characterizing the noise floor, drift, hysteresis, and the relationship between measured voltage and physical movement or force. I used testing data to support more accurate mapping from voltage to finger angle and grip force, while also identifying when a measured change was large enough to be distinguished from expected noise or drift. For the IMUs, I gathered parameters needed for initial covariance values in the Extended Kalman Filter and considered how sensor bias, noise, and starting orientation affect the quality of the final motion estimate.
-                    </p>
-                    <div class="skill-cloud">
-                      <span class="tag">IMUs</span>
-                      <span class="tag">ADC</span>
-                      <span class="tag">Hysteresis/Drift</span>
-                      <span class="tag">Noise floor</span>
-                    </div>
-                  </div>
-
-                  <figure class="media-card">
-                    <div class="media-box">
-                      <img class="expandable-image" src="./ForceSensorExample.JPG" alt="Glove UI" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-                    </div>
-                    <figcaption class="caption">Loading and unloading curve for relating force to voltage.</figcaption>
-                  </figure>
-
-                </div>
-
-                <div class="contribution-media-stack">
-                  <figure class="media-card">
-                  <div class="media-box">
-                      <img class="expandable-image" src="./AllanDeviations.JPG" alt="Glove UI" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-                    </div>
-                    <figcaption class="caption">Allan Variance chart used to get bias instability for use in EKF.</figcaption>
-                  </figure>
-                  <figure class="media-card">
-                  <div class="media-box">
-                      <img class="expandable-image" src="./orthogonalityCorrection.JPG" alt="Glove UI" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-                    </div>
-                    <figcaption class="caption">Accelerometer axis orthogonality correction for IMU. </figcaption>
-                  </figure>
-                </div>
-
-              </article>
-
-              <article class="contribution-card">
-                <div class="contribution-text-media">
-                  <div class="contribution-text">
-                    <h4>Electronics Selection and PCB Design</h4>
-                    <p>
-                      Selected the major electronic components used on the rehabilitation glove, including both PCB-mounted and off-board components. This included choosing sensors, ADCs, multiplexers, microcontroller-related hardware, signal-conditioning components, and supporting circuitry based on the measurement goals and physical constraints of the glove. I designed the analog front-end circuitry for the flex and force sensors, including voltage-divider behavior, buffering, and low-pass filtering. The filter cutoff frequencies were chosen based on expected human finger movement and grip-force changes, so the system could reduce noise without removing useful motion data. I also selected component packages, created the schematic, designed the physical PCB layout, and considered manufacturability, routing, board size, and integration with the wearable glove assembly.
-                    </p>
-                    <div class="skill-cloud">
-                      <span class="tag">KiCAD</span>
-                      <span class="tag">PCB Design</span>
-                      <span class="tag">Mixed Signal</span>
-                      <span class="tag">Analog Conditioning</span>
-                    </div>
-                  </div>
-
-                  <figure class="media-card">
-                    <div class="media-box">
-                      <img class="expandable-image" src="./SolderedPCBs.jpeg" alt="..." />
-                    </div>
-                    <figcaption class="caption">PCBs with components soldered.</figcaption>
-                  </figure>
-
-                </div>
-                <div class="contribution-media-stack">
-                  <figure class="media-card">
-                    <div class="media-box">
-                      <img class="expandable-image" src="./ArmMajorSchematic.JPG" alt="Glove UI" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-                    </div>
-                    <figcaption class="caption">Schematic for the PCB which connects to sensors on glove.</figcaption>
-                  </figure>
-                  <figure class="media-card">
-                    <div class="media-box">
-                      <img class="expandable-image" src="./AnalogFrontEnd.JPG" alt="Glove UI" onerror="this.style.display='none'; this.parentElement.textContent='Add electronics, motor driver, or controller photo.';" />
-                    </div>
-                    <figcaption class="caption">Buffer and filter schematic used for analog signals.</figcaption>
-                  </figure>
-                </div>
-
-              </article>
-
-              <article class="contribution-card">
-                <div class="contribution-text-media">
-                  <div class="contribution-text">
-                    <h4>Data Processing Program</h4>
-                    <p>
-                      Created the data processing program responsible for receiving raw sensor data from the glove, converting it into usable motion and force information, and sending the processed values to the user interface for therapists and patients. The program processes analog sensor readings, applies calibration relationships, and uses filtering methods such as moving averages to improve usable resolution. For IMU-related data, I implemented and tuned an Extended Kalman Filter to improve orientation estimation and support more accurate interpretation of hand and finger motion. I also implemented statistical checks to compare measured analog-signal changes against expected drift and noise, helping determine whether a detected change likely represents real motion or sensor variation.
-                    </p>
-                    <div class="skill-cloud">
-                      <span class="tag">C/C++</span>
-                      <span class="tag">Data Processing</span>
-                      <span class="tag">EKF</span>
-                      <span class="tag">Orientation Tracking</span>
-                    </div>
-                  </div>
-                </div>
-
-              </article>
-            </div>
-          </div>
-
-          <div class="subsection">
-            <div class="subsection-header">
-              <div>
-                <p class="section-kicker">Code excerpts</p>
-                <h3>Rehabilitation glove code slices</h3>
-              </div>
-            </div>
-
-            <div class="code-grid">
-              <article class="code-card">
-                <div class="code-card-header">
-                  <div>
-                    <h4>Sensor sample schema</h4>
-                    <p>Shows a compact data structure for keeping readings consistent across acquisition and transmission.</p>
-                  </div>
-                  <button class="copy-button" type="button" data-copy-target="glove-code-sensor">Copy</button>
-                </div>
-                <pre class="scroll-hidden" id="glove-code-sensor"><code><span class="token-keyword">struct</span> SensorSample {
-  uint8_t sensorId;
-  uint8_t sensorType;
-  uint32_t timestampMs;
-  uint32_t sequence;
-  float raw[<span class="token-number">3</span>];
-};
-
-<span class="token-keyword">bool</span> enqueueSample(QueueHandle_t queue, <span class="token-keyword">const</span> SensorSample&amp; sample) {
-  BaseType_t ok = xQueueSend(queue, &amp;sample, <span class="token-number">0</span>);
-
-  <span class="token-keyword">if</span> (ok != pdTRUE) {
-    <span class="token-comment">// Drop policy is explicit so acquisition does not block.</span>
-    logQueueOverflow(sample.sensorId, sample.timestampMs);
-    <span class="token-keyword">return false</span>;
-  }
-
-  <span class="token-keyword">return true</span>;
-}</code></pre>
-              </article>
-
-              <article class="code-card">
-                <div class="code-card-header">
-                  <div>
-                    <h4>Noise-aware ADC interpretation</h4>
-                    <p>Shows how a measured change can be compared against an empirical noise floor.</p>
-                  </div>
-                  <button class="copy-button" type="button" data-copy-target="glove-code-adc">Copy</button>
-                </div>
-                <pre class="scroll-hidden" id="glove-code-adc"><code><span class="token-keyword">def</span> distinguishable_change(delta_v, noise_std, confidence=3.0):
-    <span class="token-string">"""Return True when signal change exceeds empirical noise floor."""</span>
-    threshold = confidence * noise_std
-    <span class="token-keyword">return</span> abs(delta_v) &gt;= threshold
-
-<span class="token-keyword">def</span> effective_lsb(full_scale_v, bits, gain=1):
-    adc_range = full_scale_v / gain
-    <span class="token-keyword">return</span> adc_range / (<span class="token-number">2</span> ** bits)
-
-noise_std_v = <span class="token-number">0.0018</span>
-measured_delta_v = <span class="token-number">0.0092</span>
-
-<span class="token-keyword">if</span> distinguishable_change(measured_delta_v, noise_std_v):
-    print(<span class="token-string">"Change is large enough to treat as real motion."</span>)</code></pre>
-              </article>
+          <figure class="technical-figure">
+            <div class="image-surface"><img src="./ArmMajorSchematic.JPG" width="948" height="685" loading="lazy" alt="Glove sensor PCB schematic with microcontroller, ADCs, sensor connections, and supporting circuits"></div>
+            <figcaption><strong>Sensor PCB schematic.</strong> The board connects the glove’s sensors to the acquisition electronics.</figcaption>
+          </figure>
+          <figure class="technical-figure">
+            <div class="image-surface"><img src="./AnalogFrontEnd.JPG" width="731" height="427" loading="lazy" alt="Analog front-end schematic showing the buffer and filter circuit for sensor signals"></div>
+            <figcaption><strong>Analog front end.</strong> Buffering and filtering condition sensor signals before acquisition.</figcaption>
+          </figure>
+        </article>
+        <article class="contribution">
+          <div class="contribution-heading">
+            <h4>Data processing and estimation</h4>
+            <div class="prose">
+              <p>I created the program that receives raw readings, converts them into motion and force information, and sends processed values to the user interface. It applies calibration relationships and moving-average filtering to analog measurements.</p>
+              <p>For IMU data, I implemented and tuned an Extended Kalman Filter for orientation estimation. Statistical checks compare measured changes against expected drift and noise to help distinguish motion from sensor variation.</p>
+              <p class="tools">C/C++ · Signal processing · Extended Kalman Filter · Orientation tracking</p>
             </div>
           </div>
         </article>
       </div>
     </section>
-
-    <section id="contact">
-      <div class="page-shell">
-        <div class="contact-panel">
-          <div>
-            <p class="section-kicker">Contact</p>
-            <h2>Available for automation, controls, embedded, and systems integration roles.</h2>
-          </div>
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:jasondgomez04@gmail.com"><span>Email</span><span>↗</span></a>
-            <a class="contact-link" href="./JasonGomezResume.pdf" target="_blank" rel="noreferrer"><span>Resume</span><span>↗</span></a>
-          </div>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-inner">
+        <div><p class="eyebrow">Contact</p><h2 id="contact-title">Get in touch.</h2></div>
+        <div class="contact-links">
+          <a href="mailto:jasondgomez04@gmail.com">jasondgomez04@gmail.com</a>
+          <a href="./JasonGomezResume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+          <a href="https://github.com/jasondgo">GitHub / jasondgo</a>
         </div>
       </div>
     </section>
   </main>
-
-  <footer class="footer">
-    <div class="page-shell">
-      <span>© <span id="year"></span> Jason Gomez</span>
-      <span>Built for GitHub Pages.</span>
-    </div>
-  </footer>
-
-  <script>
-    const menuButton = document.querySelector('[data-menu-button]');
-    const navLinks = document.querySelector('[data-nav-links]');
-
-    menuButton?.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-
-    navLinks?.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
-
-    document.querySelectorAll('[data-copy-target]').forEach((button) => {
-      button.addEventListener('click', async () => {
-        const targetId = button.getAttribute('data-copy-target');
-        const target = document.getElementById(targetId);
-        const text = target?.innerText || '';
-
-        try {
-          await navigator.clipboard.writeText(text);
-          const original = button.textContent;
-          button.textContent = 'Copied';
-          setTimeout(() => { button.textContent = original; }, 1200);
-        } catch {
-          button.textContent = 'Copy failed';
-          setTimeout(() => { button.textContent = 'Copy'; }, 1200);
-        }
-      });
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const imageModal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      const closeImageModal = document.getElementById('closeImageModal');
-
-      if (!imageModal || !modalImage || !closeImageModal) {
-        console.warn('Image modal elements were not found.');
-        return;
-      }
-
-      document.querySelectorAll('.expandable-image').forEach((image) => {
-        image.addEventListener('click', () => {
-          modalImage.src = image.dataset.full || image.src;
-          modalImage.alt = image.alt || '';
-          imageModal.showModal();
-        });
-      });
-
-      closeImageModal.addEventListener('click', () => {
-        imageModal.close();
-      });
-
-      imageModal.addEventListener('click', (event) => {
-        if (event.target === imageModal) {
-          imageModal.close();
-        }
-      });
-    });
-  </script>
-
-<dialog id="imageModal">
-  <button id="closeImageModal" type="button">Close</button>
-  <img id="modalImage" alt="" />
-</dialog>
-
+  <footer class="footer"><div class="wrap"><span>Jason Gomez · Engineering portfolio</span><a href="#top">Back to top</a></div></footer>
 </body>
 </html>
