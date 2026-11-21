@@ -133,17 +133,19 @@
     .study-role p { max-width: 60ch; }
     .study-team { padding-left: 1.7rem; border-left: 1px solid var(--line); color: var(--muted); }
     .study-team h3 { color: var(--ink); }
-    .study-methods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 1.3rem; }
-    .study-method { margin: 0; padding: 1.5rem; }
-    .study-method h3 { font-size: 1.8rem; line-height: 1.15; margin-bottom: 1rem; }
+    .study-summary { margin-top: 1.3rem; }
+    .study-summary h3 { font-size: 1.9rem; line-height: 1.15; margin-bottom: 1rem; }
+    .study-summary ul { margin: 0; padding-left: 1.3rem; max-width: 85ch; }
+    .study-summary li + li { margin-top: .55rem; }
+    .study-summary li::marker { color: var(--accent); }
     .study-figure { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 2rem; align-items: center; margin-top: 1.5rem; padding: 1.3rem; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; }
     .study-figure .image-surface { display: flex; justify-content: center; padding: .8rem; background: #fff; border-radius: 3px; }
     .study-figure img { width: 100%; height: auto; max-width: 690px; }
     .study-figure figcaption { margin: 0; font-size: 1rem; }
     .study-figure figcaption strong { display: block; margin-bottom: .65rem; color: var(--accent); font-weight: 400; }
-    .study-note { margin-top: 1.5rem; padding: 1.3rem 1.5rem; border-left: 3px solid #78929f; background: #192a33; }
-    .study-note h3 { font-size: 1.7rem; margin-bottom: .7rem; }
-    .study-note p { max-width: 90ch; color: var(--muted); }
+    .study-reflection { margin-top: 1.5rem; padding: 2rem; background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 5px; }
+    .study-reflection h3 { font-size: 2rem; line-height: 1.15; }
+    .study-reflection .prose { color: var(--ink); }
     .contact { padding: 3.5rem 0; background: #243c48; border-top: 1px solid #426171; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
     .contact h2 { font-size: 3.4rem; line-height: 1.05; margin-top: .6rem; }
@@ -172,7 +174,6 @@
       .contribution-acquisition .technical-figure { width: 100%; }
       .project-header { gap: 2rem; }
       .dashboard { grid-template-columns: 1fr; }
-      .study-methods { grid-template-columns: 1fr; }
       .study-figure { grid-template-columns: 1fr; gap: 1rem; }
     }
     @media (max-width: 760px) {
@@ -229,6 +230,7 @@
       .technical-figure .image-surface { padding: .35rem; }
       .measurement-board { padding: .6rem; }
       .dashboard { padding: 1rem; gap: 1rem; }
+      .study-reflection { padding: 1.2rem; }
       .study-figure { padding: .8rem; }
       .study-figure .image-surface { padding: .3rem; }
       .contact-links a:first-child { font-size: 1.15rem; }
@@ -503,29 +505,15 @@
             <p>Other team members handled the Arduino programming, mechanical design, and electrical design. The linked paper is our coauthored project report; the work highlighted here describes my individual contribution.</p>
           </div>
         </div>
-        <div class="study-methods">
-          <article class="contribution study-method">
-            <h3>Identify the loaded plant</h3>
-            <div class="prose">
-              <p>I used chirp input and measured motor-response data to identify a continuous-time transfer function in MATLAB. Keeping the motor coupled to the guitar’s tuning peg captured the effect of the actual mechanical load.</p>
-              <p class="tools">System identification · Transfer functions · MATLAB tfest</p>
-            </div>
-          </article>
-          <article class="contribution study-method">
-            <h3>Design the discrete controller</h3>
-            <div class="prose">
-              <p>I developed an inner PID position loop and an outer loop that converts frequency error into incremental target-angle changes. I used zero-order-hold discretization and Simulink tuning to prepare the design for embedded implementation.</p>
-              <p class="tools">Discrete-time control · PID tuning · MATLAB c2d</p>
-            </div>
-          </article>
-          <article class="contribution study-method">
-            <h3>Analyze stability &amp; response</h3>
-            <div class="prose">
-              <p>I locally linearized the nonlinear relationship between peg angle and string frequency, examined closed-loop poles against the unit circle as that local gain varied, and tested nonlinear convergence across target frequencies.</p>
-              <p class="tools">Local linearization · Pole analysis · Nonlinear simulation</p>
-            </div>
-          </article>
-        </div>
+        <article class="contribution study-summary">
+          <h3>Control design at a glance</h3>
+          <ul>
+            <li>Identified the loaded motor’s continuous-time transfer function from chirp-response data in MATLAB.</li>
+            <li>Designed and tuned the inner PID position loop and outer frequency-control loop in Simulink.</li>
+            <li>Discretized the model using zero-order hold for embedded implementation.</li>
+            <li>Linearized the angle-to-frequency relationship and evaluated closed-loop poles and nonlinear convergence.</li>
+          </ul>
+        </article>
         <div class="section-label"><h3>Evidence from the report</h3></div>
         <figure class="study-figure">
           <div class="image-surface"><img src="./images/controls/loaded-motor-chirp-response.png" width="683" height="431" loading="lazy" alt="Measured motor response and chirp input plotted over time for motor identification"></div>
@@ -535,10 +523,16 @@
           <div class="image-surface"><img src="./images/controls/closed-loop-poles.png" width="690" height="456" loading="lazy" alt="Closed-loop pole locations plotted against the unit circle as the local angle-to-frequency gain varies"></div>
           <figcaption><strong>Discrete-time stability checks</strong>The pole plot shows the linearized closed-loop models over the tested angle-to-frequency gain range. These are simulation results from the report.</figcaption>
         </figure>
-        <aside class="study-note" aria-labelledby="tuning-hardware-note">
-          <h3 id="tuning-hardware-note">From simulation to hardware</h3>
-          <p>The report’s frequency sweep and pole plots are simulation results. The physical demonstration used the guitar’s low E string; Arduino limitations required the inner loop to be reduced from the modeled 1 kHz to 750 Hz during implementation.</p>
-        </aside>
+        <section class="study-reflection" aria-labelledby="tuning-reflection-title">
+          <div class="contribution-heading">
+            <h3 id="tuning-reflection-title">What I’d change today</h3>
+            <div class="prose">
+              <p>I completed the control design and MATLAB/Simulink analysis before we had tested pitch detection on the Arduino Uno. The firmware and pitch detection were handled by other members of the team, and we didn’t coordinate closely enough on how often the controller could expect a reliable pitch measurement. I’d change how we managed that handoff. I’d make an end-to-end test of pitch detection on the target hardware an early milestone, while we still had time to change the hardware or revise the control design.</p>
+              <p>The Uno’s memory limits constrained the audio analysis to 256 samples per estimate. That produced coarse pitch estimates and required about 256 ms of audio per reading, even though I had designed the outer loop around a fresh reading every 40 ms. The motor position loop also ended up running at about 750 Hz instead of the 1 kHz used in the design. By the time those constraints became clear, we focused on tuning the physical prototype for the demonstration, and I didn’t rerun the full control analysis with the final implementation settings. Today I’d measure the pitch estimator’s accuracy and timing, use those results to choose the hardware and loop rates, and rerun the Simulink analysis with the settings we actually implemented.</p>
+              <p>I’d also make the physical testing more thorough. The original simulation sweep recorded whether each case met the five-second settling goal. I’d run repeated hardware trials from several starting pitches above and below the low E target, then plot <strong>pitch error and peg angle over time</strong> alongside the simulated responses.</p>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
     <section class="project" id="professional-work" aria-labelledby="work-title">
