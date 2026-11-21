@@ -48,11 +48,11 @@
     .focus { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: start; margin-top: 3rem; padding: 1.4rem 1.7rem; border-left: 3px solid var(--accent); background: var(--panel); }
     .focus .eyebrow { padding-top: .2rem; }
     .focus p:last-child { max-width: 74ch; color: #d3dde0; }
-    .work-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; padding-bottom: 4rem; }
-    .index-item { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 1.1rem; padding: 1.2rem; border: 1px solid var(--line); border-radius: 5px; text-decoration: none; background: #15242c; transition: border-color 160ms ease; }
+    .work-index { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; padding-bottom: 4rem; }
+    .index-item { display: grid; grid-template-columns: 145px minmax(0, 1fr); grid-template-rows: auto; align-items: center; gap: 1.1rem; padding: 1.2rem; border: 1px solid var(--line); border-radius: 5px; text-decoration: none; background: #15242c; transition: border-color 160ms ease; }
     .index-item:hover { border-color: var(--accent); color: var(--ink); }
     .index-image { background: #e0e5e6; border-radius: 3px; overflow: hidden; }
-    .index-image img { width: 100%; height: 180px; object-fit: contain; }
+    .index-image img { width: 100%; height: 110px; object-fit: contain; }
     .index-item span { color: var(--accent); font-size: .875rem; }
     .index-item h2 { font-size: 2rem; line-height: 1.1; margin: .3rem 0 .5rem; }
     .index-item p { font-size: 1rem; color: var(--muted); line-height: 1.5; }
@@ -126,6 +126,24 @@
     .work-detail .contribution-heading { display: block; }
     .work-detail h3 { font-size: 1.9rem; line-height: 1.12; margin-bottom: 1.1rem; }
     .work-detail:last-child { border-top: 3px solid var(--accent); }
+    .paper-link { display: inline-flex; margin-top: 1.3rem; padding: .65rem 1.1rem; border: 1px solid var(--accent); border-radius: 3px; color: var(--accent); text-decoration: none; }
+    .paper-link:hover { background: var(--accent); color: var(--paper); }
+    .study-role { display: grid; grid-template-columns: 1.35fr 1fr; gap: 2.5rem; padding: 1.8rem; background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 5px; }
+    .study-role h3 { font-size: 2rem; line-height: 1.15; margin: .5rem 0 .8rem; }
+    .study-role p { max-width: 60ch; }
+    .study-team { padding-left: 1.7rem; border-left: 1px solid var(--line); color: var(--muted); }
+    .study-team h3 { color: var(--ink); }
+    .study-methods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 1.3rem; }
+    .study-method { margin: 0; padding: 1.5rem; }
+    .study-method h3 { font-size: 1.8rem; line-height: 1.15; margin-bottom: 1rem; }
+    .study-figure { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 2rem; align-items: center; margin-top: 1.5rem; padding: 1.3rem; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; }
+    .study-figure .image-surface { display: flex; justify-content: center; padding: .8rem; background: #fff; border-radius: 3px; }
+    .study-figure img { width: 100%; height: auto; max-width: 690px; }
+    .study-figure figcaption { margin: 0; font-size: 1rem; }
+    .study-figure figcaption strong { display: block; margin-bottom: .65rem; color: var(--accent); font-weight: 400; }
+    .study-note { margin-top: 1.5rem; padding: 1.3rem 1.5rem; border-left: 3px solid #78929f; background: #192a33; }
+    .study-note h3 { font-size: 1.7rem; margin-bottom: .7rem; }
+    .study-note p { max-width: 90ch; color: var(--muted); }
     .contact { padding: 3.5rem 0; background: #243c48; border-top: 1px solid #426171; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
     .contact h2 { font-size: 3.4rem; line-height: 1.05; margin-top: .6rem; }
@@ -140,7 +158,7 @@
       .hero-grid { gap: 2rem; }
       .portrait img { height: 470px; }
       .index-item { padding: 1rem; }
-      .index-image img { height: 150px; }
+      .index-image img { height: 110px; }
       .work-gallery-grid { grid-template-columns: 1fr 1fr; }
       .work-photo { height: 280px; }
       .work-photo:last-child { grid-column: 1 / -1; width: min(100%, 285px); height: auto; justify-self: center; }
@@ -154,6 +172,8 @@
       .contribution-acquisition .technical-figure { width: 100%; }
       .project-header { gap: 2rem; }
       .dashboard { grid-template-columns: 1fr; }
+      .study-methods { grid-template-columns: 1fr; }
+      .study-figure { grid-template-columns: 1fr; gap: 1rem; }
     }
     @media (max-width: 760px) {
       .wrap { width: calc(100% - 2.5rem); }
@@ -174,6 +194,8 @@
       .glove-overview .image-surface { height: 330px; }
       .glove-overview img { max-height: 330px; }
       .contact-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .study-role { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.3rem; }
+      .study-team { padding: 1.3rem 0 0; border-left: 0; border-top: 1px solid var(--line); }
       .contribution h4 { max-width: none; }
     }
     @media (max-width: 480px) {
@@ -188,7 +210,7 @@
       .hero-note { font-size: 1rem; }
       .focus { padding: 1.2rem; }
       .index-item { grid-template-columns: 100px 1fr; padding: 1rem; }
-      .index-image img { height: 150px; }
+      .index-image img { height: 110px; }
       .index-item h2 { font-size: 1.8rem; }
       .index-item span { font-size: .875rem; }
       .project { padding-block: 3rem; }
@@ -207,6 +229,8 @@
       .technical-figure .image-surface { padding: .35rem; }
       .measurement-board { padding: .6rem; }
       .dashboard { padding: 1rem; gap: 1rem; }
+      .study-figure { padding: .8rem; }
+      .study-figure .image-surface { padding: .3rem; }
       .contact-links a:first-child { font-size: 1.15rem; }
       .footer .wrap { flex-wrap: wrap; }
     }
@@ -221,6 +245,7 @@
       <div class="nav-links">
         <a href="#lechuga">Lechuga</a>
         <a href="#rehab-glove">Rehab glove</a>
+        <a href="#instrument-tuning">Controls study</a>
         <a href="#professional-work">Work</a>
         <a href="#contact">Contact</a>
       </div>
@@ -260,6 +285,12 @@
         <div><span>Wearable instrumentation · Capstone</span>
         <h2>Rehabilitation glove</h2>
         <p>Sensor characterization, acquisition electronics, and motion estimation.</p></div>
+      </a>
+      <a class="index-item" href="#instrument-tuning">
+        <div class="index-image"><img src="./images/controls/closed-loop-poles.png" width="690" height="456" alt="" loading="lazy"></div>
+        <div><span>Control systems · Course project</span>
+        <h2>Automatic instrument tuning</h2>
+        <p>System identification, discrete PID control, and stability analysis.</p></div>
       </a>
       <a class="index-item" href="#professional-work">
         <div class="index-image"><img src="./images/work/field-equipment.jpg" width="1600" height="1200" alt="" loading="lazy"></div>
@@ -445,6 +476,69 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+    <section class="project" id="instrument-tuning" aria-labelledby="tuning-title">
+      <div class="wrap">
+        <header class="project-header">
+          <div>
+            <p class="eyebrow">Control systems · ESET 462</p>
+            <h2 class="project-title" id="tuning-title">PID-controlled<br>instrument tuning</h2>
+            <a class="paper-link" href="./papers/pid-controlled-automatic-instrument-tuning.pdf" target="_blank" rel="noopener noreferrer">Read the full paper (PDF)</a>
+          </div>
+          <div class="project-summary">
+            <p>A senior-year fall-semester project on automatic guitar tuning. A motor turns the tuning peg while encoder and audio feedback support a two-loop controller that brings the string toward its target pitch.</p>
+            <div class="scope"><strong>Technical focus</strong><br>Loaded-motor identification, transfer functions, discretization, local linearization, and closed-loop analysis in MATLAB/Simulink.</div>
+          </div>
+        </header>
+        <div class="study-role">
+          <div>
+            <p class="eyebrow">My contribution</p>
+            <h3>Control theory &amp; MATLAB/Simulink</h3>
+            <p>I was responsible for all of the project’s control-theory and MATLAB/Simulink work: identifying the motor model while it was connected to the guitar, designing and analyzing the controller, discretizing the model, and linearizing the nonlinear system. I provided the models, controller parameters, and implementation details to the programming team.</p>
+          </div>
+          <div class="study-team">
+            <p class="eyebrow">Team implementation</p>
+            <h3>A collaborative prototype</h3>
+            <p>Other team members handled the Arduino programming, mechanical design, and electrical design. The linked paper is our coauthored project report; the work highlighted here describes my individual contribution.</p>
+          </div>
+        </div>
+        <div class="study-methods">
+          <article class="contribution study-method">
+            <h3>Identify the loaded plant</h3>
+            <div class="prose">
+              <p>I used chirp input and measured motor-response data to identify a continuous-time transfer function in MATLAB. Keeping the motor coupled to the guitar’s tuning peg captured the effect of the actual mechanical load.</p>
+              <p class="tools">System identification · Transfer functions · MATLAB tfest</p>
+            </div>
+          </article>
+          <article class="contribution study-method">
+            <h3>Design the discrete controller</h3>
+            <div class="prose">
+              <p>I developed an inner PID position loop and an outer loop that converts frequency error into incremental target-angle changes. I used zero-order-hold discretization and Simulink tuning to prepare the design for embedded implementation.</p>
+              <p class="tools">Discrete-time control · PID tuning · MATLAB c2d</p>
+            </div>
+          </article>
+          <article class="contribution study-method">
+            <h3>Analyze stability &amp; response</h3>
+            <div class="prose">
+              <p>I locally linearized the nonlinear relationship between peg angle and string frequency, examined closed-loop poles against the unit circle as that local gain varied, and tested nonlinear convergence across target frequencies.</p>
+              <p class="tools">Local linearization · Pole analysis · Nonlinear simulation</p>
+            </div>
+          </article>
+        </div>
+        <div class="section-label"><h3>Evidence from the report</h3></div>
+        <figure class="study-figure">
+          <div class="image-surface"><img src="./images/controls/loaded-motor-chirp-response.png" width="683" height="431" loading="lazy" alt="Measured motor response and chirp input plotted over time for motor identification"></div>
+          <figcaption><strong>Characterization under load</strong>Chirp excitation and motor-response measurements formed the basis of the identified plant model, with the motor attached to the guitar’s tuning peg.</figcaption>
+        </figure>
+        <figure class="study-figure">
+          <div class="image-surface"><img src="./images/controls/closed-loop-poles.png" width="690" height="456" loading="lazy" alt="Closed-loop pole locations plotted against the unit circle as the local angle-to-frequency gain varies"></div>
+          <figcaption><strong>Discrete-time stability checks</strong>The pole plot shows the linearized closed-loop models over the tested angle-to-frequency gain range. These are simulation results from the report.</figcaption>
+        </figure>
+        <aside class="study-note" aria-labelledby="tuning-hardware-note">
+          <h3 id="tuning-hardware-note">From simulation to hardware</h3>
+          <p>The report’s frequency sweep and pole plots are simulation results. The physical demonstration used the guitar’s low E string; Arduino limitations required the inner loop to be reduced from the modeled 1 kHz to 750 Hz during implementation.</p>
+        </aside>
       </div>
     </section>
     <section class="project" id="professional-work" aria-labelledby="work-title">
