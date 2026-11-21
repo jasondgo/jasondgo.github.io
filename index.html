@@ -59,6 +59,8 @@
     .project { padding: 4rem 0; border-top: 1px solid var(--line); }
     .project.alt { background: #15232b; }
     .project-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 2rem; }
+    .project-identity { display: flex; align-items: center; gap: 1rem; margin-bottom: .9rem; }
+    .project-logo { flex: 0 0 108px; width: 108px; height: 88px; object-fit: contain; padding: .45rem; background: #f1f3ee; border-radius: 4px; }
     .project-title { font-size: clamp(2.8rem, 5vw, 4.2rem); line-height: 1.02; letter-spacing: -.015em; margin-top: .7rem; }
     .project-summary > p { font-size: 1.1875rem; line-height: 1.55; max-width: 48ch; }
     .scope { margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 1rem; }
@@ -243,7 +245,7 @@
       </div>
       <div class="focus">
         <p class="eyebrow">Looking ahead</p>
-        <p>I’m looking to pursue higher education and grow in my current role by taking on greater responsibilities, with a focus on machine vision and robot programming.</p>
+        <p>I’m looking to pursue higher education and grow in my current role by taking on greater responsibilities, with a focus on embedded systems development and controls engineering.</p>
       </div>
     </section>
     <div class="wrap work-index" id="selected-work" aria-label="Selected projects and professional work">
@@ -270,7 +272,10 @@
       <div class="wrap">
         <header class="project-header">
           <div>
-            <p class="eyebrow">Machine automation</p>
+            <div class="project-identity">
+              <img class="project-logo" src="./logoLechuga.png" width="1670" height="1242" loading="lazy" alt="Lechuga logo">
+              <p class="eyebrow">Machine automation</p>
+            </div>
             <h2 class="project-title" id="lechuga-title">Lechuga<br>Automated food service</h2>
           </div>
           <div class="project-summary">
@@ -344,7 +349,10 @@
       <div class="wrap">
         <header class="project-header">
           <div>
-            <p class="eyebrow">Wearable instrumentation · Capstone</p>
+            <div class="project-identity">
+              <img class="project-logo" src="./logoCapstone.png" width="1024" height="1024" loading="lazy" alt="In Good Hands capstone logo">
+              <p class="eyebrow">In Good Hands<br>Wearable instrumentation · Capstone</p>
+            </div>
             <h2 class="project-title" id="glove-title">Measuring hand motion &amp; grip</h2>
           </div>
           <div class="project-summary">
@@ -358,8 +366,8 @@
             <figcaption>The assembled wearable sensing platform.</figcaption>
           </figure>
           <figure>
-            <div class="image-surface"><img src="./GloveRender.JPG" width="580" height="510" loading="lazy" alt="Exploded CAD views showing the glove components and grip-strength device"></div>
-            <figcaption>Component layout for the glove and grip-strength device.</figcaption>
+            <div class="image-surface"><img src="./GloveRender.JPG" width="580" height="510" loading="lazy" alt="Exploded CAD view showing the glove components"></div>
+            <figcaption>Component layout for the glove.</figcaption>
           </figure>
         </div>
         <figure class="technical-figure dashboard">
@@ -372,7 +380,7 @@
             <h4>Embedded data acquisition</h4>
             <div class="prose">
               <p>I planned and developed the architecture for sampling glove sensors at consistent, known rates and transmitting readings over Bluetooth Low Energy. FreeRTOS tasks separate scheduling, acquisition, communication, and logging; queues carry data between them.</p>
-              <p>Each transmitted sample includes a sensor ID, raw value, timestamp, and sequence number. I checked timing through logs of the mean sampling period and its deviation, with measured deviations in the tens of microseconds.</p>
+              <p>Each transmitted sample includes a sensor ID, raw value, timestamp, and sequence number. I checked timing through logs of the mean sampling period and its deviation.</p>
               <p class="tools">FreeRTOS · BLE · C/C++ · Data acquisition</p>
             </div>
           </div>
@@ -410,7 +418,7 @@
             <h4>Electronics and PCB design</h4>
             <div class="prose">
               <p>I selected sensors, ADCs, multiplexers, microcontroller hardware, and supporting circuitry around the measurement requirements and physical constraints of the glove. I designed the analog front end for flex and force sensors, including voltage dividers, buffering, and low-pass filtering.</p>
-              <p>Filter cutoff frequencies were chosen around expected finger movement and grip-force changes. I also selected packages, created schematics, and laid out the PCBs, considering routing, manufacturability, board size, and integration with the wearable assembly.</p>
+              <p>Filter cutoff frequencies were chosen around expected finger movement and grip-force changes. I also selected component packages, created schematics, and laid out the PCBs to meet sizing and budget constraints.</p>
               <p class="tools">KiCad · PCB layout · Mixed-signal electronics · Analog conditioning</p>
             </div>
           </div>
